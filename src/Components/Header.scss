@@ -1,0 +1,104 @@
+.header{
+    height: 66px;
+    background-color: fff;
+    width: 100%;
+    //border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 rgb(24 28 33 / 4%);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 22px 45px;
+    /*&__burger-button{
+        display: none;
+        width: 17px;
+        height: 20px;
+        background: url('../Images/header/burger.svg')0 0/100% 100% no-repeat;
+    }*/
+    &__questions{
+        display: flex;
+        font-size: 14px;
+        margin-right: 50px;
+    }
+    &__user{
+        display: flex;
+        font-size: 14px;
+        &:hover div{
+            cursor: pointer;
+            color: #000;
+        }
+    }
+}
+
+.questions{
+    &__title{
+        color: #A9A9A9;
+        margin-right: 17px;
+        text-align: center;
+        align-self: center;
+    }
+    &__first{
+        width: 22px;
+        height: 22px;
+        background: url('../Images/header/blue-question.svg')0 0/100% 100% no-repeat;
+        margin-right: 12px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    &__second{
+        width: 22px;
+        height: 22px;
+        background: url('../Images/header/green-question.svg')0 0/100% 100% no-repeat;
+        margin-right: 12px;
+        &:hover{
+            cursor: pointer;
+        }
+
+    }
+    &__third{
+        width: 22px;
+        height: 22px;
+        background: url('../Images/header/red-question.svg')0 0/100% 100% no-repeat;
+        margin-right: 12px;
+        &:hover{
+            cursor: pointer;
+        }
+
+    }
+}
+
+.user{
+    &__name{
+        color: #A9A9A9;
+        text-align: center;
+        align-self: center;
+        margin-right: 10px;
+    }
+    &__avatar{
+        width: 30px;
+        height: 30px;
+        background: url('../Images/header/avatar.svg')0 0/100% 100% no-repeat;
+    }
+    &__arrow{
+        margin-top: 8px;
+        margin-left: 8px;
+        width: 9px;
+        height: 9px;
+        border: solid gray;
+        padding: 3px;
+        border-width: 0 1px 1px 0;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    }
+}
+@media (max-width: 1200px) {
+    .header{
+        background-color: #2e323a;
+        /*&__burger-button{
+            display: flex;
+            position: absolute;
+            left: 2%;
+        }*/
+    }
+}
