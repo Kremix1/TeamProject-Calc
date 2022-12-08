@@ -72,5 +72,23 @@
                 background-color: #f6f6f6;
             }
         }
+
+    }
+    &__total{
+        width: 70px;
+        height: 24px;
+        background-color: #B5183E;
+        border-radius: 15px;
+        text-align: center;
+        border: #B5183E solid 2px;
+    }
+    &__title-wrapper{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    &__title{
+        margin-right: 10px;
     }
 }

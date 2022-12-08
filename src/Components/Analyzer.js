@@ -22,9 +22,9 @@ export default class Analyzer extends Component{
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Итерации</th>
-                                    <th>По всем итерациям</th>
-                                    <th>Коэффициент участия</th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">Итерации</div><div className="question"></div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">По всем итерациям</div><div className="question"></div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">Коэффициент участия</div><div className="question"></div></div></th>
                                 </tr>
                             </thead>
                             <tbody>
