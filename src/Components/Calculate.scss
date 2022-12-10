@@ -5,9 +5,12 @@
 
 
 .content{
+    display: flex;
+    flex-direction: column;
     margin-top: 35px;
     margin-bottom: 15px;
     &__title{
+        align-self: flex-start;
         display: flex;
         flex-direction: row;
         text-align: center;

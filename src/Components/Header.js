@@ -5,9 +5,11 @@ import Prompt from "./Prompt";
 
 export default class Header extends Component{
     showPrompt = () => {
-        console.log('dasdas')
         document.querySelectorAll('#title').forEach((title)=>{
             title.classList.toggle('title-index')
+        })
+        document.querySelectorAll('#prompt').forEach((title)=>{
+            title.classList.toggle('show-prompt')
         })
         document.querySelector('.prompt-wrapper').classList.toggle('visibility-prompt')
     }

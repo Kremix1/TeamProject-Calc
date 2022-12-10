@@ -35,7 +35,7 @@
         }
     }
     &__prompt{
-        display: flex;
+        display: none;
         position: relative;
     }
 }
@@ -45,27 +45,35 @@
         width: 80px;
         height: 80px;
         background: url('../Images/Prompts/arrow.svg')0 0 /100% 100% no-repeat;
+        transform: rotate(-30deg);
     }
     &__body{
+        padding: 15px 4px 10px 4px;
         position: absolute;
         left: 100px;
         top: -20px;
-        width: 300px;
+        width: 360px;
         height: 125px;
         background: #02bc77;
         color: #fff;
         font-size: 16px;
-        line-height: 36px;
+        line-height: 18px;
+        text-align: center;
         border-radius: 100px;
     }
 }
 
 .prompt-first{
-    position: absolute;
-    top: 140px;
-    left: 980px;
 }
 
 .prompt-second{
-    position: absolute;
+}
+
+.show-prompt{
+    display: flex;
+    z-index: 1000;
+}
+
+@media (max-width: 1200px) {
+    
 }
