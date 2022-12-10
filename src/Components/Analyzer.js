@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import '../null.scss';
 import './Calculate.scss'
 import './Analyzer.scss'
+import './Prompt.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import Table from 'react-bootstrap/Table';
 import Question from "./Assets/Question";
@@ -13,8 +14,12 @@ export default class Analyzer extends Component{
         return(
             <div className="content">
                 <div className="content__title">
-                    <div className="title__text">Калькулятор итоговой оценки</div>
+                    <div id="title" className="title__text">Калькулятор промежуточной оценки</div>
                     <Question/>
+                    <div id="prompt" className='content__prompt prompt-first'>
+                        <div className='prompt__arrow'></div>
+                        <div className='prompt__body'>Это калькулятор промежуточной оценки, в него можно внести предпологаемые вводные данные оценок по Итерациям и Коэффициент участия. После чего калькулятор подскажет, как максимизировать свои баллы!</div>
+                    </div>
                 </div>
                 <div className="content__table-wrapper">
                     <div className="table-wrapper__table">
