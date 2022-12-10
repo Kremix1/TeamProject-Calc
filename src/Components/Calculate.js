@@ -25,7 +25,7 @@ export default class Calculate extends Component{
         return(
             <div className="content">
                 <div className="content__title">
-                    <div className="title__text">Калькулятор итоговой оценки</div>
+                    <div id="title" className="title__text">Калькулятор итоговой оценки</div>
                     <Question/>
                 </div>
                 <div className="content__table-wrapper">
