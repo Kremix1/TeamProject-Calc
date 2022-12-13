@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //import Person from './Person';
 
 export default function TablePerson(isCalculate) {
+    //ToDo: Сделать выбор калькулятора и анализатора
     const [persons, setTest] = useState([
         {personName: 'Клок Тимофей Алексеевич'},
         {personName: 'Моисеев Денис Александрович'},
