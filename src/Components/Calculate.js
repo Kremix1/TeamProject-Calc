@@ -1,28 +1,17 @@
-import React, { Component, useState } from "react";
+import { React, useState } from "react";
 import '../null.scss';
 import './Calculate.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import Table from 'react-bootstrap/Table';
 import Question from "./Assets/Question";
 import './Prompt.scss';
+import TablePerson from './TablePerson';
 
 
 
-export default class Calculate extends Component{
-    constructor(props) {
-      super(props)
-    
-      this.state = {
-        iterations: [],
-        fullIterations: [],
-        coefficient: [],
-        expertComission: [],
-        total: [],
-      }
-    }
+export default function Calculate(){
     //ToDo: Сделать динамическое создание столбцов
     //https://react-bootstrap.netlify.app/components/table/#rb-docs-content (Конец документации)
-    render(){
         return(
             <div className="content">
                 <div className="content__title">
@@ -55,182 +44,12 @@ export default class Calculate extends Component{
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                <tr>
-                                    <td>Клок Тимофей Алексеевич</td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                            <form className="table__input-place">
-                                                <input></input>
-                                            </form>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <div className="table__total"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Моисеев Денис Александрович</td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                            <form className="table__input-place">
-                                                <input></input>
-                                            </form>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <div className="table__total"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Несмелов Павел Евгеньевич</td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                            <form className="table__input-place">
-                                                <input></input>
-                                            </form>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <div className="table__total"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Соколов Михаил Иванович</td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                            <form className="table__input-place">
-                                                <input></input>
-                                            </form>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <div className="table__total"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Фокин Богдан Сергеевич</td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                            <form className="table__input-place">
-                                                <input></input>
-                                            </form>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <div className="table__total"></div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <TablePerson isCalculate={true}/>
                             </tbody>
                         </Table>
                     </div>
                     <div className="table-wrapper__button">Рассчитать</div>
                 </div>
             </div>
-        )
-    }
+    )
 }

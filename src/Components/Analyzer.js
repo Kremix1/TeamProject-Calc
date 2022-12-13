@@ -6,6 +6,7 @@ import './Prompt.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import Table from 'react-bootstrap/Table';
 import Question from "./Assets/Question";
+import TablePerson from './TablePerson';
 
 export default class Analyzer extends Component{
     //ToDo: Сделать динамическое создание столбцов
@@ -39,116 +40,7 @@ export default class Analyzer extends Component{
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                <tr>
-                                    <td>Клок Тимофей Алексеевич</td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                            <form className="table__input-place">
-                                                <input></input>
-                                            </form>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Моисеев Денис Александрович</td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                            <form className="table__input-place">
-                                                <input></input>
-                                            </form>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Несмелов Павел Евгеньевич</td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                            <form className="table__input-place">
-                                                <input></input>
-                                            </form>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Соколов Михаил Иванович</td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                            <form className="table__input-place">
-                                                <input></input>
-                                            </form>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Фокин Богдан Сергеевич</td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td className="center">
-                                            <form className="table__input-place">
-                                                <input></input>
-                                            </form>
-                                    </td>
-                                    <td className="center">
-                                        <div className="table__input-place">
-                                            <form>
-                                                <input></input>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <TablePerson isCalculate={false}/>
                             </tbody>
                         </Table>
                     </div>
