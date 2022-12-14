@@ -9,7 +9,6 @@ import Question from "./Assets/Question";
 import TablePerson from './TablePerson';
 
 export default class Analyzer extends Component{
-    //ToDo: Сделать динамическое создание столбцов
     //https://react-bootstrap.netlify.app/components/table/#rb-docs-content (Конец документации)
     render(){
         return(
