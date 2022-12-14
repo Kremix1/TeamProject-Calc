@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 //import Person from './Person';
 
-export default function TablePerson(isCalculate) {
+export default function TablePerson({isCalculate}) {
     //ToDo: Сделать выбор калькулятора и анализатора
     const [persons, setTest] = useState([
         {personName: 'Клок Тимофей Алексеевич'},
