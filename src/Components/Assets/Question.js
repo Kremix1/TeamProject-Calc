@@ -1,13 +1,22 @@
-import React, { Component } from "react";
+import  {React} from "react";
 import '../../null.scss';
 import './Question.scss'
+import TablePrompt from "./TablePrompt";
 
-export default class Question extends Component{
-    render(){
+//ToDo: Разобраться, почему не возвращает компонент, но возвращает лог
+export default function Question(isCalculate){
+    if(isCalculate){
         return(
-            <a href="#" className="question">
+            <div className="question" onClick={()=>{console.log('111')}}>
                 <div className="question__inner"></div>
-            </a>
+            </div>
+        )
+    }
+    else{
+        return(
+            <div className="question" onClick={()=>{console.log('222');return(<TablePrompt isCalculate={isCalculate}/>)}}>
+                <div className="question__inner"></div>
+            </div>
         )
     }
 }

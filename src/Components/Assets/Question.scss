@@ -1,9 +1,13 @@
 .question{
     display: flex;
+    flex-shrink: 0;
     width: 22px;
     height: 22px;
     background: url('../../Images/Assets/gray_question.svg') 0 0/100% 100% no-repeat;
     &__inner{
 
+    }
+    &:hover{
+        cursor: pointer;
     }
 }

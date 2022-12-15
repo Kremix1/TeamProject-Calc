@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import {React} from "react";
 import '../null.scss';
 import './Calculate.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
@@ -16,7 +16,7 @@ export default function Calculate(){
             <div className="content">
                 <div className="content__title">
                     <div id="title" className="title__text">Калькулятор итоговой оценки</div>
-                    <Question/>
+                    <Question isCalculate={true}/>
                     <div id="prompt" className='content__prompt prompt-first'>
                         <div className='prompt__arrow'></div>
                         <div className='prompt__body'>Это калькулятор итоговой оценки, в него можно внести предпологаемые вводные данные оценок по Итерациям, Коэффициент участия, Сводную оценку комиссии и посмотреть, что будет в итоге</div>

@@ -15,7 +15,7 @@ export default class Analyzer extends Component{
             <div className="content">
                 <div className="content__title">
                     <div id="title" className="title__text">Калькулятор промежуточной оценки</div>
-                    <Question/>
+                    <Question isCalculate={false}/>
                     <div id="prompt" className='content__prompt prompt-first'>
                         <div className='prompt__arrow'></div>
                         <div className='prompt__body'>Это калькулятор промежуточной оценки, в него можно внести предпологаемые вводные данные оценок по Итерациям и Коэффициент участия. После чего калькулятор подскажет, как максимизировать свои баллы!</div>
