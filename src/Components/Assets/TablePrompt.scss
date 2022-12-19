@@ -1,0 +1,26 @@
+.table{
+    &__total{
+        line-height: 20px;
+        color: #fff;
+    }
+}
+
+.advise{
+    margin-top: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 80px;
+    justify-content: center;
+    display: flex;
+    align-self: center;
+    width: 700px;
+    height: 80px;
+    color: #fff;
+    background-color: #25BD74;
+    border-radius: 50px;
+}
+
+.advise-hide{
+    display: none;
+}

@@ -1,28 +1,98 @@
 import {React, useState} from "react";
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-//import Person from './Person';
 
-const IterationInput = ({identify, inputKey, onChange, dataRow}) => {
-    return <input value={dataRow[inputKey]} onChange={onChange} name={inputKey} identify={identify}/>
+const IterationInput = ({name, row, onChange}) => {
+    return <input name={name} value={row[name]} onChange={(e) => onChange(e, row.identify)}/>
 }
 
-export default function TablePerson({isCalculate}) {
-    const [dataRow, setDataRow] = useState({personName: '', identify: '', iteration: '', allIteration: '',
-    coefficient: '', comission: '', total: '',})
+const TotalButtonEl = (data, setData) => {
+    return <div className="table-wrapper__button" onClick={() => TotalButton(data, setData)}>Рассчитать</div>
+}
+
+const TotalButton = (data, setData) => {
+    console.log(data)
+    data.map((item) =>{
+        item.total = 100;
+        console.log(item.total)
+    })
+}
+
+const Advise = (data, setAdvise, setAdviseClass) => {
+    //Сюда пихаем формулу для таблицы
+    if(data[0].iteration == 1){
+        console.log(data[0])
+        setAdvise('На вот, посмотри')
+        setAdviseClass('advise')
+    }
+    else{
+        setAdviseClass('advise-hide')
+    }
+    
+}
+
+const TablePerson = ({isCalculate}) => {
+    const [advise, setAdvise] = useState('');
+    const [adviseClass, setAdviseClass] = useState('');
+
+    const [dataInCalculate, setDataInCalculate] = useState([
+        {
+            personName: "Клок Тимофей Алексеевич",
+            identify: "1",
+            iteration: "0",
+            allIteration: "0",
+            coefficient: "0",
+            comission: "0",
+            total: "0",
+          },
+          {
+            personName: "Моисеев Денис Александрович",
+            identify: "2",
+            iteration: "0",
+            allIteration: "0",
+            coefficient: "0",
+            comission: "0",
+            total: "0",
+          },
+          {
+            personName: "Несмелов Павел Евгеньевич",
+            identify: "3",
+            iteration: "0",
+            allIteration: "0",
+            coefficient: "0",
+            comission: "0",
+            total: "0",
+          },
+          {
+            personName: "Соколов Михаил Иванович",
+            identify: "4",
+            iteration: "0",
+            allIteration: "0",
+            coefficient: "0",
+            comission: "0",
+            total: "0",
+          },
+          {
+            personName: "Фокин Богдан Сергеевич",
+            identify: "5",
+            iteration: "0",
+            allIteration: "0",
+            coefficient: "0",
+            comission: "0",
+            total: "0",
+          },
+    ])
+    const [data, setData] = useState(dataInCalculate);
     
       
-    const onChange = (e) => {
-        const {name, value} = e.target 
-        setDataRow({[name]: value})
-    }
-
-    //<input name={item.identify} value={item.comission} onChange={console.log(1)}></input>
-
-
-
-
-
+    const onChange = (e, rowId) => {
+        const {name, value} = e.target
+        setData(
+            data.map((row)=>
+                row.identify !== rowId ? row : { ...row, [name]: value }
+            )
+        );
+    };
 
     const arrayName = [
         'Клок Тимофей Алексеевич',
@@ -32,111 +102,80 @@ export default function TablePerson({isCalculate}) {
         'Фокин Богдан Сергеевич',
     ]
 
-    const persons = [];
-    for(let i = 0; i < arrayName.length; i++){
-        let copy = Object.assign([], dataRow)
-        copy.personName = arrayName[i]
-        copy.identify = i;
-        persons.push(copy)
-    }
-
-
-
-
-    //ToDo: Реализовать сложение массива(Чтобы впечатываемый текст добавлялся к имеющемуся)
-    //const [test, setTest] = useState('')
-
-
-    //ПЕРЕДАТЬ ПАРАМЕТР В ФУНКЦИЮ С ИВЕНТОМ .................................................................
-
-
-    const arrayOfVariables = [
-        {personName:'', identify:'', iteration:'', allIteration:'', coefficient:'', comission:''},
-        {personName:'', identify:'', iteration:'', allIteration:'', coefficient:'', comission:''},
-        {personName:'', identify:'', iteration:'', allIteration:'', coefficient:'', comission:''},
-        {personName:'', identify:'', iteration:'', allIteration:'', coefficient:'', comission:''},
-        {personName:'', identify:'', iteration:'', allIteration:'', coefficient:'', comission:''},
-    ]
-
-    const handleIteration = (value) => (event) =>{
-
-        arrayOfVariables[0].iteration = event.target.value
-        
-        console.log(arrayOfVariables[0].iteration)
-        //console.log(arrayOfVariables[identify])
-    }
-
     if(isCalculate){
         return(
             <>
-                {persons.map(item => 
-                <tr key={item.identify}>
-                <td>{item.personName}</td>
-                <td className="center">
-                    <div className="table__input-place">
-                        <form>
-                            <IterationInput identify={item.id} inputKey='iteration' onChange={onChange} dataRow={dataRow} />
-                        </form>
-                    </div>
-                </td>
-                <td className="center">
-                        <form className="table__input-place">
-                            <IterationInput inputKey='allIteration' onChange={onChange} dataRow={dataRow} />
-                        </form>
-                </td>
-                <td className="center">
-                    <div className="table__input-place">
-                        <form>
-                            <IterationInput inputKey='coefficient' onChange={onChange} dataRow={dataRow} />
-                        </form>
-                    </div>
-                </td>
-                <td className="center">
-                    <div className="table__input-place">
-                        <form>
-                            <IterationInput inputKey='comission' onChange={onChange} dataRow={dataRow} />
-                        </form>
-                    </div>
-                </td>
-                <td className="center">
-                    <div className="table__input-place">
-                        <div className="table__total">
-
+                {data.map(row => 
+                <tr key={row.identify}>
+                    <td>{row.personName}</td>
+                    <td className="center">
+                        <div className="table__input-place">
+                            <form>
+                                <IterationInput name='iteration' onChange={(e) => onChange(e, row.identify)} row={row} />
+                            </form>
                         </div>
-                    </div>
-                </td>
-            </tr>
-            )}
+                    </td>
+                    <td className="center">
+                            <form className="table__input-place">
+                                <IterationInput name='allIteration' onChange={(e) => onChange(e, row.identify)} row={row} />
+                            </form>
+                    </td>
+                    <td className="center">
+                        <div className="table__input-place">
+                            <form>
+                                <IterationInput name='coefficient' onChange={(e) => onChange(e, row.identify)} row={row} /> 
+                            </form>
+                        </div>
+                    </td>
+                    <td className="center">
+                        <div className="table__input-place">
+                            <form>
+                                <IterationInput name='comission' onChange={(e) => onChange(e, row.identify)} row={row} /> 
+                            </form>
+                        </div>
+                    </td>
+                    <td className="center">
+                        <div className="table__input-place">
+                            <div className="table__total">{row.total}</div>
+                        </div>
+                    </td>
+                </tr>
+                )}
+                <div className="table-wrapper__button" onClick={() => TotalButton(data, setData)}>Рассчитать</div>
             </>
         );
     }
     else{
         return(
             <>
-                {persons.map(item => 
-                <tr key={item.identify}>
-                <td>{item.personName}</td>
+                {data.map(row => 
+                <tr key={row.identify}>
+                <td>{row.personName}</td>
                 <td className="center">
                     <div className="table__input-place">
                         <form>
-                            <input></input>
+                            <IterationInput name='iteration' onChange={(e) => onChange(e, row.identify)} row={row} /> 
                         </form>
                     </div>
                 </td>
                 <td className="center">
                         <form className="table__input-place">
-                            <input></input>
+                            <IterationInput name='allIteration' onChange={(e) => onChange(e, row.identify)} row={row} /> 
                         </form>
                 </td>
                 <td className="center">
                     <div className="table__input-place">
                         <form>
-                            <input></input>
+                            <IterationInput name='coefficient' onChange={(e) => onChange(e, row.identify)} row={row} /> 
                         </form>
                     </div>
                 </td>
             </tr>)}
+            <div className="table-wrapper__button" onClick={() => Advise(data, setAdvise, setAdviseClass)}>Получить совет</div>
+            <div className={adviseClass}>{advise}</div>
             </>
         );
     }
 }
+
+export {TablePerson, TotalButton, TotalButtonEl}
