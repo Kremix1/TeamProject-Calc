@@ -5,9 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Table from 'react-bootstrap/Table';
 import Question from "./Assets/Question";
 import './Prompt.scss';
-import TablePerson from './TablePerson';
-
-
+import {TablePerson} from './TablePerson';
 
 export default function Calculate(){
     //ToDo: Сделать динамическое создание столбцов
@@ -48,8 +46,9 @@ export default function Calculate(){
                             </tbody>
                         </Table>
                     </div>
-                    <div className="table-wrapper__button">Рассчитать</div>
+
                 </div>
             </div>
     )
 }
+//<div className="table-wrapper__button" onClick={TotalButton(data, setData)}>Рассчитать</div>

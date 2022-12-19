@@ -6,7 +6,7 @@ import './Prompt.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import Table from 'react-bootstrap/Table';
 import Question from "./Assets/Question";
-import TablePerson from './TablePerson';
+import {TablePerson, TotalButton} from './TablePerson';
 
 export default class Analyzer extends Component{
     //https://react-bootstrap.netlify.app/components/table/#rb-docs-content (Конец документации)
@@ -43,9 +43,12 @@ export default class Analyzer extends Component{
                             </tbody>
                         </Table>
                     </div>
-                    <div className="table-wrapper__button">Получить совет</div>
+
                 </div>
             </div>
         )
     }
 }
+
+
+//<div className="table-wrapper__button">Получить совет</div>
