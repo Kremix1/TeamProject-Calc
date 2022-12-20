@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import '../null.scss';
 import './RenderTable.scss'
 
@@ -6,12 +6,23 @@ const IterationInput = ({name, row, onChange}) => {
     return <input onSubmit={(e) => handleSubmit(e)} name={name} value={row[name]} onChange={(e) => onChange(e, row.identify)}/>
 }
 
-const TotalButton = (props) => {
-    console.log(props.data)
-    props.data.map((item) =>{
-        item.total = 100;
-        console.log(item.total)
-    })
+const TotalButton = (data, setData, colorizeTotal, setColorizeTotal) => {
+    setData(
+        data.map((row) =>{
+            //СЮДА ПИХАЕМ-С ФОРМУЛУ КАЛЬКУЛЯТОРА (ВМЕСТО СТРОКИ 15) |||||||
+            
+            
+            row.total = Number(row.iteration) + Number(row.allIteration) + Number(row.coefficient) + Number(row.comission);
+            
+            
+            if(row.total > 79)
+                return({ ...row, totalColor: 'green'})
+            if((40 < row.total) && (row.total < 61))
+                return({ ...row, totalColor: 'yellow'})
+            return({ ...row, totalColor: 'red'})
+        })
+    )
+    console.log(data);
 }
 
 const handleSubmit = (e) =>{
@@ -19,6 +30,8 @@ const handleSubmit = (e) =>{
 }
 
 export const RenderTable = (props) => {
+    const [colorizeTotal, setColorizeTotal] = useState('table__total');
+
     const onChange = (e, rowId) => {
         const {name, value} = e.target
         props.setData(
@@ -28,6 +41,7 @@ export const RenderTable = (props) => {
         );
     };
     if(props.isCalculate){
+        console.log(props.data)
         return(
             <>
                 {props.data.map(row => 
@@ -61,12 +75,12 @@ export const RenderTable = (props) => {
                     </td>
                     <td className="center">
                         <div className="table__input-place">
-                            <div className="table__total">{row.total}</div>
+                            <div className={'table__total ' + row.totalColor}>{row.total}</div>
                         </div>
                     </td>
                 </tr>
                 )}
-                <div className="table-wrapper__button" onClick={() => TotalButton(props.data, props.setData)}>Рассчитать</div>
+                <div className="table-wrapper__button" onClick={() => TotalButton(props.data, props.setData, colorizeTotal, setColorizeTotal)}>Рассчитать</div>
             </>
         );
     }
