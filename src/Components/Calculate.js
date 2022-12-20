@@ -1,4 +1,4 @@
-import {React} from "react";
+import {React, useState} from "react";
 import '../null.scss';
 import './Calculate.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
@@ -7,7 +7,7 @@ import Question from "./Assets/Question";
 import './Prompt.scss';
 import {TablePerson} from './TablePerson';
 
-export default function Calculate(){
+export default function Calculate(props){
     //ToDo: Сделать динамическое создание столбцов
     //https://react-bootstrap.netlify.app/components/table/#rb-docs-content (Конец документации)
         return(
@@ -42,7 +42,7 @@ export default function Calculate(){
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                <TablePerson isCalculate={true}/>
+                                <TablePerson isCalculate={true} dataInCalculate={props.dataInCalculate}/>
                             </tbody>
                         </Table>
                     </div>
