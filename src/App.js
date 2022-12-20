@@ -17,6 +17,7 @@ function App() {
         coefficient: "0",
         comission: "0",
         total: "0",
+        totalColor: "red",
       },
       {
         personName: "Моисеев Денис Александрович",
@@ -26,6 +27,7 @@ function App() {
         coefficient: "0",
         comission: "0",
         total: "0",
+        totalColor: "red",
       },
       {
         personName: "Несмелов Павел Евгеньевич",
@@ -35,6 +37,7 @@ function App() {
         coefficient: "0",
         comission: "0",
         total: "0",
+        totalColor: "red",
       },
       {
         personName: "Соколов Михаил Иванович",
@@ -44,6 +47,7 @@ function App() {
         coefficient: "0",
         comission: "0",
         total: "0",
+        totalColor: "red",
       },
       {
         personName: "Фокин Богдан Сергеевич",
@@ -53,6 +57,7 @@ function App() {
         coefficient: "0",
         comission: "0",
         total: "0",
+        totalColor: "red",
       },
 ])
   return (
