@@ -7,24 +7,15 @@ const IterationInput = ({name, row, onChange}) => {
     return <input name={name} value={row[name]} onChange={(e) => onChange(e, row.identify)}/>
 }
 
-const TotalButtonEl = (data, setData) => {
-    return <div className="table-wrapper__button" onClick={() => TotalButton(data, setData)}>Рассчитать</div>
-}
-
-const TotalButton = (data, setData) => {
-    console.log(data)
-    data.map((item) =>{
-        item.total = 100;
-        console.log(item.total)
-    })
-}
-
 const Advise = (data, setAdvise, setAdviseClass) => {
-    
+    console.log(data)
     //Сюда пихаем формулу для таблицы ||||||||||||
+
+
     if(data[0].iteration == 1){
         console.log(data[0])
         setAdvise('На вот, посмотри')
+        
         setAdviseClass('advise')
     }
     else{
@@ -37,60 +28,52 @@ const handleSubmit = (e) =>{
     e.preventDefault()
 }
 
-const TablePerson = (props) => {
+export const TablePerson = (props) => {
     const [advise, setAdvise] = useState('');
     const [adviseClass, setAdviseClass] = useState('');
 
     
-    const [data, setData] = useState(props.dataInCalculate);
+    //const [data, setData] = useState(props.dataInCalculate);
     
       
     const onChange = (e, rowId) => {
         const {name, value} = e.target
-        setData(
-            data.map((row)=>
+        props.setDataInCalculate(
+            props.dataInCalculate.map((row)=>
                 row.identify !== rowId ? row : { ...row, [name]: value }
             )
         );
         e.preventDefault()
     };
 
-    
-    if(props.isCalculate){
-        return(<RenderTable isCalculate={props.isCalculate} data={data} setData={setData} />)
-    }
-    else{
-        return(
-            <>
-                {data.map(row => 
-                    <tr key={row.identify}>
-                    <td>{row.personName}</td>
-                    <td className="center">
-                        <div className="table__input-place">
-                            <form onSubmit={(e) => handleSubmit(e)}>
-                                <IterationInput name='iteration' onChange={(e) => onChange(e, row.identify)} row={row} /> 
-                            </form>
-                        </div>
-                    </td>
-                    <td className="center">
-                            <form onSubmit={(e) => handleSubmit(e)} className="table__input-place">
-                                <IterationInput name='allIteration' onChange={(e) => onChange(e, row.identify)} row={row} /> 
-                            </form>
-                    </td>
-                    <td className="center">
-                        <div className="table__input-place">
-                            <form onSubmit={(e) => handleSubmit(e)}>
-                                <IterationInput name='coefficient' onChange={(e) => onChange(e, row.identify)} row={row} /> 
-                            </form>
-                        </div>
-                    </td>
-                    </tr>
-                )}
-            <div className="table-wrapper__button" onClick={() => Advise(data, setAdvise, setAdviseClass)}>Получить совет</div>
-            <div className={adviseClass}>{advise}</div>
-            </>
-        );
-    }
+    return(
+        <>
+            {props.dataInCalculate.map(row => 
+                <tr key={row.identify}>
+                <td>{row.personName}</td>
+                <td className="center">
+                    <div className="table__input-place">
+                        <form onSubmit={(e) => handleSubmit(e)}>
+                            <IterationInput name='iteration' onChange={(e) => onChange(e, row.identify)} row={row} /> 
+                        </form>
+                    </div>
+                </td>
+                <td className="center">
+                        <form onSubmit={(e) => handleSubmit(e)} className="table__input-place">
+                            <IterationInput name='allIteration' onChange={(e) => onChange(e, row.identify)} row={row} /> 
+                        </form>
+                </td>
+                <td className="center">
+                    <div className="table__input-place">
+                        <form onSubmit={(e) => handleSubmit(e)}>
+                            <IterationInput name='coefficient' onChange={(e) => onChange(e, row.identify)} row={row} /> 
+                        </form>
+                    </div>
+                </td>
+                </tr>
+            )}
+        <div className="table-wrapper__button" onClick={() => Advise(props.dataInCalculate, setAdvise, setAdviseClass)}>Получить совет</div>
+        <div className={adviseClass}>{advise}</div>
+        </>
+    );
 }
-
-export {TablePerson, TotalButton, TotalButtonEl}

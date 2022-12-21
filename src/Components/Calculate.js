@@ -6,8 +6,10 @@ import Table from 'react-bootstrap/Table';
 import Question from "./Assets/Question";
 import './Prompt.scss';
 import {TablePerson} from './TablePerson';
+import { RenderTable } from "./RenderTable";
 
 export default function Calculate(props){
+    const [data, setData] = useState(props.dataInCalculate);
     //ToDo: Сделать динамическое создание столбцов
     //https://react-bootstrap.netlify.app/components/table/#rb-docs-content (Конец документации)
         return(
@@ -42,7 +44,7 @@ export default function Calculate(props){
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                <TablePerson isCalculate={true} dataInCalculate={props.dataInCalculate}/>
+                                <RenderTable isCalculate={true} data={data} setData={setData} />
                             </tbody>
                         </Table>
                     </div>
