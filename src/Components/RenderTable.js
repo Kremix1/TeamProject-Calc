@@ -7,19 +7,22 @@ const IterationInput = ({name, row, onChange}) => {
 }
 
 const TotalButton = (data, setData) => {
+    var maxIteration = 0;
+    for (var i = 0; i < data.length; i++) {
+        maxIteration = Math.max(maxIteration, data[i].allIteration)
+    }
     setData(
         data.map((row) =>{
-            //СЮДА ПИХАЕМ-С ФОРМУЛУ КАЛЬКУЛЯТОРА (ВМЕСТО СТРОКИ 15) |||||||
-            
-            
-            row.total = Number(row.iteration) + Number(row.allIteration) + Number(row.coefficient) + Number(row.comission);
-            
-            
-            if(row.total > 79)
+            row.coefficient = row.allIteration / maxIteration
+            row.total = row.comission * row.coefficient
+            if(row.total >= 80)
                 return({ ...row, totalColor: 'green'})
-            if((40 < row.total) && (row.total < 61))
+            else if ((row.total >= 60) && (row.total < 80))
                 return({ ...row, totalColor: 'yellow'})
-            return({ ...row, totalColor: 'red'})
+            else if ((row.total >= 40) && (row.total < 60))
+                return({ ...row, totalColor: 'red'})
+            else
+                return({ ...row, totalColor: 'gray'})
         })
     )
     console.log(data);
@@ -49,13 +52,6 @@ export const RenderTable = (props) => {
                 {props.data.map(row => 
                 <tr key={row.identify}>
                     <td>{row.personName}</td>
-                    <td className="center">
-                        <div className="table__input-place">
-                            <form onSubmit={(e) => handleSubmit(e)}>
-                                <IterationInput name='iteration' onChange={(e) => onChange(e, row.identify)} row={row} />
-                            </form>
-                        </div>
-                    </td>
                     <td className="center">
                             <form onSubmit={(e) => handleSubmit(e)} className="table__input-place">
                                 <IterationInput name='allIteration' onChange={(e) => onChange(e, row.identify)} row={row} />
