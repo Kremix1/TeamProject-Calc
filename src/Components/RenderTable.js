@@ -6,7 +6,7 @@ const IterationInput = ({name, row, onChange}) => {
     return <input onSubmit={(e) => handleSubmit(e)} name={name} value={row[name]} onChange={(e) => onChange(e, row.identify)}/>
 }
 
-const TotalButton = (data, setData, colorizeTotal, setColorizeTotal) => {
+const TotalButton = (data, setData) => {
     setData(
         data.map((row) =>{
             //СЮДА ПИХАЕМ-С ФОРМУЛУ КАЛЬКУЛЯТОРА (ВМЕСТО СТРОКИ 15) |||||||
@@ -25,12 +25,15 @@ const TotalButton = (data, setData, colorizeTotal, setColorizeTotal) => {
     console.log(data);
 }
 
+const IterationTableClose = () => {
+    document.getElementById('itTable').classList.toggle('show');
+}
+
 const handleSubmit = (e) =>{
     e.preventDefault()
 }
 
 export const RenderTable = (props) => {
-    const [colorizeTotal, setColorizeTotal] = useState('table__total');
 
     const onChange = (e, rowId) => {
         const {name, value} = e.target
@@ -41,7 +44,6 @@ export const RenderTable = (props) => {
         );
     };
     if(props.isCalculate){
-        console.log(props.data)
         return(
             <>
                 {props.data.map(row => 
@@ -80,7 +82,7 @@ export const RenderTable = (props) => {
                     </td>
                 </tr>
                 )}
-                <div className="table-wrapper__button" onClick={() => TotalButton(props.data, props.setData, colorizeTotal, setColorizeTotal)}>Рассчитать</div>
+                <div className="table-wrapper__button" onClick={() => TotalButton(props.data, props.setData)}>Рассчитать</div>
             </>
         );
     }
@@ -93,25 +95,39 @@ export const RenderTable = (props) => {
                     <td className="center">
                         <div className="table__input-place">
                             <form onSubmit={(e) => handleSubmit(e)}>
-                                <IterationInput name='iteration' onChange={(e) => onChange(e, row.identify)} row={row} /> 
+                                <IterationInput name='iterationAnalyze' onChange={(e) => onChange(e, row.identify)} row={row} /> 
                             </form>
                         </div>
                     </td>
                     <td className="center">
                             <form onSubmit={(e) => handleSubmit(e)} className="table__input-place">
-                                <IterationInput name='allIteration' onChange={(e) => onChange(e, row.identify)} row={row} /> 
+                                <IterationInput name='iterationDesign' onChange={(e) => onChange(e, row.identify)} row={row} /> 
                             </form>
                     </td>
                     <td className="center">
                         <div className="table__input-place">
                             <form onSubmit={(e) => handleSubmit(e)}>
-                                <IterationInput name='coefficient' onChange={(e) => onChange(e, row.identify)} row={row} /> 
+                                <IterationInput name='iterationDev' onChange={(e) => onChange(e, row.identify)} row={row} /> 
+                            </form>
+                        </div>
+                    </td>
+                    <td className="center">
+                        <div className="table__input-place">
+                            <form onSubmit={(e) => handleSubmit(e)}>
+                                <IterationInput name='iterationTest' onChange={(e) => onChange(e, row.identify)} row={row} /> 
+                            </form>
+                        </div>
+                    </td>
+                    <td className="center">
+                        <div className="table__input-place">
+                            <form onSubmit={(e) => handleSubmit(e)}>
+                                <IterationInput name='iterationPres' onChange={(e) => onChange(e, row.identify)} row={row} /> 
                             </form>
                         </div>
                     </td>
                     </tr>
                 )}
-                <div className="table-wrapper__button" onClick={() => TotalButton(props.data, props.setData)}>Рассчитать</div>
+                <div className="table-wrapper__button save-button" onClick={() => IterationTableClose()}>Запомнить</div>
             </>
         )
     }

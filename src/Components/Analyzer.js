@@ -3,49 +3,60 @@ import '../null.scss';
 import './Calculate.scss'
 import './Analyzer.scss'
 import './Prompt.scss'
+import './IterationTable.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import Table from 'react-bootstrap/Table';
 import Question from "./Assets/Question";
 import {TablePerson} from './TablePerson';
 import {IterationTable} from "./IterationTable";
 
+import { RenderTable } from "./RenderTable";
+
+const showIterationTable = () => {
+    document.getElementById('itTable').classList.toggle('show');
+}
+
 export default function Analyzer(props){
+    const [dataAnalyze, setDataAnalyze] = useState(props.dataInCalculate)
     //https://react-bootstrap.netlify.app/components/table/#rb-docs-content (Конец документации)
     return(
-        <div className="content">
-            <div className="content__title">
-                <div id="title" className="title__text">Калькулятор промежуточной оценки</div>
-                <Question isCalculate={false}/>
-                <div id="prompt" className='content__prompt prompt-first'>
-                    <div className='prompt__arrow'></div>
-                    <div className='prompt__body'>Это калькулятор промежуточной оценки, в него можно внести предпологаемые вводные данные оценок по Итерациям и Коэффициент участия. После чего калькулятор подскажет, как максимизировать свои баллы!</div>
+        <>
+            <IterationTable dataInCalculate={dataAnalyze} setDataInCalculate={setDataAnalyze}/>
+            <div className="content">
+                <div className="content__title">
+                    <div id="title" className="title__text">Калькулятор промежуточной оценки</div>
+                    <Question isCalculate={false}/>
+                    <div id="prompt" className='content__prompt prompt-first'>
+                        <div className='prompt__arrow'></div>
+                        <div className='prompt__body'>Это калькулятор промежуточной оценки, в него можно внести предпологаемые вводные данные оценок по Итерациям и Коэффициент участия. После чего калькулятор подскажет, как максимизировать свои баллы!</div>
+                    </div>
                 </div>
-            </div>
-            <div className="content__table-wrapper">
-                <div className="table-wrapper__table">
-                    <Table striped bordered>
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th><div className="table__title-wrapper"><div className="table__title" onClick={() => IterationTable(props.dataInCalculate, props.setDataInCalculate)}>Итерации(Нажми)</div><div className="question"></div></div></th>
-                                <th><div className="table__title-wrapper"><div className="table__title">По всем итерациям</div><div className="question"></div></div></th>
-                                <th><div className="table__title-wrapper"><div className="table__title">Коэффициент участия</div><div className="question"></div></div></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Куратор: </strong>Шестеров Михаил Андреевич</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <TablePerson isCalculate={false} dataInCalculate={props.dataInCalculate}/>
-                        </tbody>
-                    </Table>
-                </div>
+                <div className="content__table-wrapper">
+                    <div className="table-wrapper__table">
+                        <Table striped bordered>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th><div className="table__title-wrapper button"><div className="table__title" onClick={() => showIterationTable()}>Итерации(Нажми)</div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">По всем итерациям</div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">Коэффициент участия</div></div></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Куратор: </strong>Шестеров Михаил Андреевич</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <TablePerson isCalculate={false} dataInCalculate={dataAnalyze} setDataInCalculate={setDataAnalyze}/>
+                            </tbody>
+                        </Table>
+                    </div>
 
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 
