@@ -28,7 +28,6 @@ export default function Calculate(props){
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th><div className="table__title-wrapper"><div className="table__title">Итерации</div><div className="question"></div></div></th>
                                     <th><div className="table__title-wrapper"><div className="table__title">По всем итерациям</div><div className="question"></div></div></th>
                                     <th><div className="table__title-wrapper"><div className="table__title">Коэффициент участия</div><div className="question"></div></div></th>
                                     <th><div className="table__title-wrapper"><div className="table__title">Оценка экспертной комиссии</div><div className="question"></div></div></th>
@@ -38,7 +37,6 @@ export default function Calculate(props){
                             <tbody>
                                 <tr>
                                     <td><strong>Куратор: </strong>Шестеров Михаил Андреевич</td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

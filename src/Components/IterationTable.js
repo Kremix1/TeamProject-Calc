@@ -17,32 +17,33 @@ export const IterationTable = (props) => {
                 </div>
             </div>
             <div className="content__table-wrapper iteration-table">
-                <div className="table-wrapper__table">
-                    <Table striped bordered>
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th><div className="table__title-wrapper"><div className="table__title">Анализ</div><div className="question"></div></div></th>
-                                <th><div className="table__title-wrapper"><div className="table__title">Проектирование</div><div className="question"></div></div></th>
-                                <th><div className="table__title-wrapper"><div className="table__title">Разработка</div><div className="question"></div></div></th>
-                                <th><div className="table__title-wrapper"><div className="table__title">Тестирование</div><div className="question"></div></div></th>
-                                <th><div className="table__title-wrapper"><div className="table__title">Презентация</div><div className="question"></div></div></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Куратор: </strong>Шестеров Михаил Андреевич</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <RenderTable isCalculate={false} data={props.dataInCalculate} setData={props.setDataInCalculate}/>
-                        </tbody>
-                    </Table>
+                <div className="iteration-table__border">
+                    <div className="table-wrapper__table">
+                        <Table striped bordered>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">Анализ</div><div className="question"></div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">Проектирование</div><div className="question"></div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">Разработка</div><div className="question"></div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">Тестирование</div><div className="question"></div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">Презентация</div><div className="question"></div></div></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Куратор: </strong>Шестеров Михаил Андреевич</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <RenderTable isCalculate={false} data={props.dataInCalculate} setData={props.setDataInCalculate}/>
+                            </tbody>
+                        </Table>
+                    </div>
                 </div>
-
             </div>
         </div>
     )

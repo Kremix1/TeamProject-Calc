@@ -1,9 +1,12 @@
 .black{
-    *{
-        color: #fff !important;
-    }
     input{
         color: #000 !important;
+    }
+    td{
+        background-color: #fff;
+    }
+    th{
+        background-color: #fff;
     }
     width: 100%;
     height: 101%;
@@ -14,12 +17,12 @@
     transform: translateX(-50%);
     background-color: rgba($color: #000000, $alpha: 0.7);
 }
-
 .show{
     display: block !important;
 }
 
 .iteration-title{
+    color: #fff;
     position: absolute;
     top: 30%;
     left: 50%;
@@ -31,6 +34,11 @@
     top: 40%;
     left: 50%;
     transform: translateX(-50%);
+    &__border{
+        background-color: #fff;
+        border: 20px solid #fff;
+        border-radius: 15px;
+    }
 }
 
 .save-button{
