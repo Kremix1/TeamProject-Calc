@@ -1,0 +1,40 @@
+.black{
+    *{
+        color: #fff !important;
+    }
+    input{
+        color: #000 !important;
+    }
+    width: 100%;
+    height: 101%;
+    display: none;
+    position: fixed;
+    top: -4%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba($color: #000000, $alpha: 0.7);
+}
+
+.show{
+    display: block !important;
+}
+
+.iteration-title{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.iteration-table{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.save-button{
+    position: absolute;
+    left: 50%; 
+    transform: translateX(-50%);
+}
