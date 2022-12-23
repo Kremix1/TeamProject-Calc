@@ -3,7 +3,7 @@ import '../null.scss';
 import './RenderTable.scss'
 
 const IterationInput = ({name, row, onChange}) => {
-    return <input onSubmit={(e) => handleSubmit(e)} name={name} value={row[name]} onChange={(e) => onChange(e, row.identify)}/>
+    return <input placeholder="0" onSubmit={(e) => handleSubmit(e)} name={name} value={row[name]} onChange={(e) => onChange(e, row.identify)}/>
 }
 
 const TotalButton = (data, setData) => {
