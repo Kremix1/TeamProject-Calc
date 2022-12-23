@@ -1,7 +1,9 @@
 import {React, useState} from "react";
 import Table from 'react-bootstrap/Table';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-import { RenderTable } from "./RenderTable";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../null.scss'
+import './Calculate.scss'
+import { IterationTable } from "./IterationTable";
 
 const IterationInput = ({name, row, onChange}) => {
     return <input placeholder="0" name={name} value={row[name]} onChange={(e) => onChange(e, row.identify)}/>
@@ -10,7 +12,6 @@ const IterationInput = ({name, row, onChange}) => {
 const Advise = (data, setAdvise, setAdviseClass) => {
     console.log(data)
     //Сюда пихаем формулу для таблицы ||||||||||||
-
 
     if(data[0].iteration == 1){
         console.log(data[0])
@@ -52,11 +53,7 @@ export const TablePerson = (props) => {
                 <tr key={row.identify}>
                 <td>{row.personName}</td>
                 <td className="center">
-                    <div className="table__input-place">
-                        <form onSubmit={(e) => handleSubmit(e)}>
-                            <IterationInput name='iteration' onChange={(e) => onChange(e, row.identify)} row={row} /> 
-                        </form>
-                    </div>
+                    <div className="table__input-place gray"></div>
                 </td>
                 <td className="center">
                         <form onSubmit={(e) => handleSubmit(e)} className="table__input-place">
@@ -72,7 +69,7 @@ export const TablePerson = (props) => {
                 </td>
                 </tr>
             )}
-        <div className="table-wrapper__button" onClick={() => Advise(props.dataInCalculate, setAdvise, setAdviseClass)}>Получить совет</div>
+        <div className="table-wrapper__button" onClick={() => {Advise(props.dataInCalculate, setAdvise, setAdviseClass); IterationTable.render()}}>Получить совет</div>
         <div className={adviseClass}>{advise}</div>
         </>
     );
