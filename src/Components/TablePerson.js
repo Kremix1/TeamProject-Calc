@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { RenderTable } from "./RenderTable";
 
 const IterationInput = ({name, row, onChange}) => {
-    return <input name={name} value={row[name]} onChange={(e) => onChange(e, row.identify)}/>
+    return <input placeholder="0" name={name} value={row[name]} onChange={(e) => onChange(e, row.identify)}/>
 }
 
 const Advise = (data, setAdvise, setAdviseClass) => {
