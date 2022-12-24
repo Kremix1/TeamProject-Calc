@@ -152,10 +152,10 @@ export const AnalyzeTable = (props) => {
                 </td>
                 </tr>
             )}
-        <div className="table-wrapper__button" onClick={() => {Advise(props.dataInCalculate, setAdvise, setAdviseClass); IterationTable.render()}}>Получить совет</div>
+        <div className="table-wrapper__button" onClick={() => Advise(props.dataInCalculate, setAdvise, setAdviseClass)}>Получить совет</div>
         <div className={adviseClass}>
             {adviseString.map(row =>
-                <div>{row}</div>
+                <div key={row}>{row}</div>
                 )}
         </div>
         </>

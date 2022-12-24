@@ -9,6 +9,7 @@
         background-color: #fff;
     }
     width: 100%;
+    z-index: 1;
     height: 101%;
     display: none;
     position: fixed;
@@ -24,14 +25,14 @@
 .iteration-title{
     color: #fff;
     position: absolute;
-    top: 30%;
+    top: 25%;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .iteration-table{
     position: absolute;
-    top: 40%;
+    top: 35%;
     left: 50%;
     transform: translateX(-50%);
     &__border{
@@ -63,5 +64,14 @@
         &__border{
             width: 660px !important;
         }
+    }
+}
+
+@media (min-width: 1199.98px) {
+    .iteration-title{
+        left: 56%;
+    }
+    .iteration-table{
+        left: 56%
     }
 }
