@@ -1,5 +1,4 @@
 import {React, useState} from "react";
-import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../null.scss'
 import './Calculate.scss'
@@ -18,12 +17,12 @@ const Advise = (data, setAdvise, setAdviseClass) => {
         + Number(data[i].iterationDev)
         + Number(data[i].iterationTest)
         + Number(data[i].iterationPres);
-        data[i].allIteration = iterationsSum; //Округлить до целого
+        data[i].allIteration = Math.round(iterationsSum);
         maxSum = Math.max(maxSum, iterationsSum);
     }
     if (data[0].iterationDesign == "") {
         for (var i = 0; i < data.length; i++) {
-            let predict =  (maxSum - data[i].allIteration) / (data.length - 1);
+            let predict =  ((maxSum - data[i].allIteration) / (data.length - 1)).toFixed(2);
             if (predict > 30) {
                 data[i].iterationDesign = 30;
                 data[i].iterationDev = 30;
@@ -31,7 +30,7 @@ const Advise = (data, setAdvise, setAdviseClass) => {
                 data[i].iterationPres = 30;
             }
             else {
-                data[i].iterationDesign = predict; //До двух знаков (Math)
+                data[i].iterationDesign = predict;
                 data[i].iterationDev = predict;
                 data[i].iterationTest = predict;
                 data[i].iterationPres = predict;
@@ -40,7 +39,7 @@ const Advise = (data, setAdvise, setAdviseClass) => {
     }
     else if (data[0].iterationDev == "") {
         for (var i = 0; i < data.length; i++) {
-            let predict = (maxSum - data[i].allIteration) / (data.length - 2);
+            let predict = ((maxSum - data[i].allIteration) / (data.length - 2)).toFixed(2);
             if (predict > 30) {
                 data[i].iterationDev = 30;
                 data[i].iterationTest = 30;
@@ -54,7 +53,7 @@ const Advise = (data, setAdvise, setAdviseClass) => {
     }
     else if (data[0].iterationTest == "") {
         for (var i = 0; i < data.length; i++) {
-            let predict =  (maxSum - data[i].allIteration) / (data.length - 3);
+            let predict =  ((maxSum - data[i].allIteration) / (data.length - 3)).toFixed(2);
             if (predict > 30) {
                 data[i].iterationTest = 30;
                 data[i].iterationPres = 30;
@@ -67,7 +66,7 @@ const Advise = (data, setAdvise, setAdviseClass) => {
     }
     else if (data[0].iterationPres == "") {
         for (var i = 0; i < data.length; i++) {
-            let predict =  (maxSum - data[i].allIteration) / (data.length - 4);
+            let predict =  ((maxSum - data[i].allIteration) / (data.length - 4)).toFixed(2);
             if (predict > 30) {
                 data[i].iterationPres = 30;
             }
@@ -78,12 +77,12 @@ const Advise = (data, setAdvise, setAdviseClass) => {
         }
     }
     for (var i = 0; i < data.length; i++) {
-        data[i].allIteration = Number(data[i].iterationAnalyze)
+        data[i].allIteration = Math.round(Number(data[i].iterationAnalyze)
         + Number(data[i].iterationDesign)
         + Number(data[i].iterationDev)
         + Number(data[i].iterationTest)
-        + Number(data[i].iterationPres); // До целого
-        data[i].coefficient = data[i].allIteration / maxSum; // До двух знаков
+        + Number(data[i].iterationPres));
+        data[i].coefficient = (data[i].allIteration / maxSum).toFixed(2);
     }
 
     if(data[0].iteration == 1){
@@ -100,14 +99,9 @@ const handleSubmit = (e) =>{
     e.preventDefault()
 }
 
-export const TablePerson = (props) => {
+export const AnalyzeTable = (props) => {
     const [advise, setAdvise] = useState('');
     const [adviseClass, setAdviseClass] = useState('');
-
-
-    //const [data, setData] = useState(props.dataInCalculate);
-
-
     const onChange = (e, rowId) => {
         const {name, value} = e.target
         props.setDataInCalculate(

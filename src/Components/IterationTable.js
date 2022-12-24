@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import { RenderTable } from "./RenderTable";
 import './IterationTable.scss'
 import Table from 'react-bootstrap/Table';
 import Question from "./Assets/Question";
-import {TablePerson} from './TablePerson';
 
 export const IterationTable = (props) => {
     return(
@@ -19,18 +18,16 @@ export const IterationTable = (props) => {
             <div className="content__table-wrapper iteration-table">
                 <div className="iteration-table__border">
                     <div className="table-wrapper__table">
-                        <Table striped bordered>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th><div className="table__title-wrapper"><div className="table__title">Анализ</div><div className="question"></div></div></th>
-                                    <th><div className="table__title-wrapper"><div className="table__title">Проектирование</div><div className="question"></div></div></th>
-                                    <th><div className="table__title-wrapper"><div className="table__title">Разработка</div><div className="question"></div></div></th>
-                                    <th><div className="table__title-wrapper"><div className="table__title">Тестирование</div><div className="question"></div></div></th>
-                                    <th><div className="table__title-wrapper"><div className="table__title">Презентация</div><div className="question"></div></div></th>
-                                </tr>
-                            </thead>
+                        <Table striped bordered className="table-mobile">
                             <tbody>
+                                <tr>
+                                    <th><div className="table__title-wrapper"><div className="table__title">Пользователь</div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">Анализ</div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">Проектирование</div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">Разработка</div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">Тестирование</div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__title">Презентация</div></div></th>
+                                </tr>
                                 <tr>
                                     <td><strong>Куратор: </strong>Шестеров Михаил Андреевич</td>
                                     <td></td>
