@@ -41,8 +41,27 @@
     }
 }
 
+.table-mobile{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.table__title{
+    margin: 0;
+}
+
 .save-button{
     position: absolute;
     left: 50%; 
     transform: translateX(-50%);
+}
+
+@media (max-width: 991.98px){
+    .iteration-table{
+        &__border{
+            width: 660px !important;
+        }
+    }
 }
