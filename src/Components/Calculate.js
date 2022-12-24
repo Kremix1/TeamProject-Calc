@@ -3,9 +3,7 @@ import '../null.scss';
 import './Calculate.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import Table from 'react-bootstrap/Table';
-import Question from "./Assets/Question";
 import './Prompt.scss';
-import {TablePerson} from './TablePerson';
 import { RenderTable } from "./RenderTable";
 
 const calculatePrompt = (prompt) => {

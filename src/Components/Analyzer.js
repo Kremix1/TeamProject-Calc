@@ -6,10 +6,9 @@ import './Prompt.scss'
 import './IterationTable.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import Table from 'react-bootstrap/Table';
-import Question from "./Assets/Question";
-import {TablePerson} from './TablePerson';
+import {AnalyzeTable} from './AnalyzeTable';
 import {IterationTable} from "./IterationTable";
-import {calculatePrompt, closePrompt} from "./Calculate";
+import {calculatePrompt} from "./Calculate";
 
 const showIterationTable = (render, setRender) => {
     setRender(!render)
@@ -73,7 +72,7 @@ export default function Analyzer(props){
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                <TablePerson isCalculate={false} dataInCalculate={dataAnalyze} setDataInCalculate={setDataAnalyze}/>
+                                <AnalyzeTable isCalculate={false} dataInCalculate={dataAnalyze} setDataInCalculate={setDataAnalyze}/>
                             </tbody>
                         </Table>
                     </div>

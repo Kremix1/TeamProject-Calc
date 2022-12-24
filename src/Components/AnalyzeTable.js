@@ -1,5 +1,4 @@
 import {React, useState} from "react";
-import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../null.scss'
 import './Calculate.scss'
@@ -100,7 +99,7 @@ const handleSubmit = (e) =>{
     e.preventDefault()
 }
 
-export const TablePerson = (props) => {
+export const AnalyzeTable = (props) => {
     const [advise, setAdvise] = useState('');
     const [adviseClass, setAdviseClass] = useState('');
 

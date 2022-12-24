@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import { RenderTable } from "./RenderTable";
 import './IterationTable.scss'
 import Table from 'react-bootstrap/Table';
 import Question from "./Assets/Question";
-import {TablePerson} from './TablePerson';
 
 export const IterationTable = (props) => {
     return(

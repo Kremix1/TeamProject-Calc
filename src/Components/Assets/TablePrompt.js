@@ -14,7 +14,6 @@ export default function TablePrompt(isCalculate){
         })
         document.querySelector('.prompt-wrapper').classList.toggle('visibility-prompt');
     }
-    console.log('dsadasdsa')
     if(isCalculate)
     return(
         <div className='prompt-wrapper'>

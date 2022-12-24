@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import '../null.scss';
 import './RenderTable.scss'
 
@@ -25,7 +25,6 @@ const TotalButton = (data, setData) => {
                 return({ ...row, totalColor: 'gray'})
         })
     )
-    console.log(data);
 }
 
 const IterationTableClose = () => {
