@@ -20,7 +20,13 @@ const Advise = (data, setAdvise, setAdviseClass) => {
         data[i].allIteration = Math.round(iterationsSum);
         maxSum = Math.max(maxSum, iterationsSum);
     }
-    if (data[0].iterationDesign == "") {
+    let isTableFilled = false
+    if (data[0].iterationPres != "") {
+        setAdvise('Ничего уже не изменить, нужно было думать раньше!')
+        setAdviseClass('advise')
+        isTableFilled = true
+    }
+    else if (data[0].iterationDesign == "") {
         for (var i = 0; i < data.length; i++) {
             let predict =  ((maxSum - data[i].allIteration) / (data.length - 1)).toFixed(2);
             if (predict > 30) {
@@ -76,6 +82,18 @@ const Advise = (data, setAdvise, setAdviseClass) => {
 
         }
     }
+
+    if (!isTableFilled) {
+        for (var i = 0; i < data.length; i++) {
+            adviseString.push("Студента " + data[i].personName + " нужно оценить всем на " + Math.round(data[i].iterationPres / 0.3) + " баллов в неоцененных итерациях.")
+        }
+        setAdvise(adviseString)
+        setAdviseClass('advise')
+        console.log(adviseString)
+    }
+
+
+
     for (var i = 0; i < data.length; i++) {
         data[i].allIteration = Math.round(Number(data[i].iterationAnalyze)
         + Number(data[i].iterationDesign)
@@ -85,20 +103,20 @@ const Advise = (data, setAdvise, setAdviseClass) => {
         data[i].coefficient = (data[i].allIteration / maxSum).toFixed(2);
     }
 
-    if(data[0].iteration == 1){
-        setAdvise('На вот, посмотри')
-        setAdviseClass('advise')
-    }
-    else{
-        setAdviseClass('advise-hide')
-    }
+    // if(data[0].iteration == 1){
+    //     setAdvise('На вот, посмотри')
+    //     setAdviseClass('advise')
+    // }
+    // else{
+    //     setAdviseClass('advise-hide')
+    // }
 
 }
 
 const handleSubmit = (e) =>{
     e.preventDefault()
 }
-
+let adviseString = []
 export const AnalyzeTable = (props) => {
     const [advise, setAdvise] = useState('');
     const [adviseClass, setAdviseClass] = useState('');
@@ -135,7 +153,11 @@ export const AnalyzeTable = (props) => {
                 </tr>
             )}
         <div className="table-wrapper__button" onClick={() => {Advise(props.dataInCalculate, setAdvise, setAdviseClass); IterationTable.render()}}>Получить совет</div>
-        <div className={adviseClass}>{advise}</div>
+        <div className={adviseClass}>
+            {adviseString.map(row =>
+                <div>{row}</div>
+                )}
+        </div>
         </>
     );
 }
