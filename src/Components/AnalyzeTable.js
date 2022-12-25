@@ -89,7 +89,6 @@ const Advise = (data, setAdvise, setAdviseClass) => {
         }
         setAdvise(adviseString)
         setAdviseClass('advise')
-        console.log(adviseString)
     }
 
 
@@ -136,7 +135,7 @@ export const AnalyzeTable = (props) => {
                 <tr key={row.identify}>
                 <td>{row.personName}</td>
                 <td className="center">
-                    <div className="table__input-place gray"></div>
+                    <div className="table__input-place disable"></div>
                 </td>
                 <td className="center">
                         <form onSubmit={(e) => handleSubmit(e)} className="table__input-place">
