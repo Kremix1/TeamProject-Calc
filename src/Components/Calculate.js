@@ -106,4 +106,3 @@ export default function Calculate(props){
             </div>
     )
 }
-//<div className="table-wrapper__button" onClick={TotalButton(data, setData)}>Рассчитать</div>
