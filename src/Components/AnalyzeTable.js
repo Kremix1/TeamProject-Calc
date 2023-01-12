@@ -107,15 +107,6 @@ const Advise = (data, setAdvise, setAdviseClass) => {
         + Number(data[i].iterationPres));
         data[i].coefficient = (data[i].allIteration / maxSum).toFixed(2);
     }
-
-    // if(data[0].iteration == 1){
-    //     setAdvise('На вот, посмотри')
-    //     setAdviseClass('advise')
-    // }
-    // else{
-    //     setAdviseClass('advise-hide')
-    // }
-
 }
 
 const handleSubmit = (e) =>{

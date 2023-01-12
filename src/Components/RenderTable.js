@@ -19,8 +19,8 @@ const TotalButton = (data, setData) => {
     }
     setData(
         data.map((row) =>{
-            row.coefficient = row.allIteration / maxIteration
-            row.total = row.comission * row.coefficient
+            row.coefficient = (row.allIteration / maxIteration).toFixed(2)
+            row.total = Math.round(row.comission * row.coefficient)
             if(row.total >= 80)
                 return({ ...row, totalColor: 'green'})
             else if ((row.total >= 60) && (row.total < 80))
