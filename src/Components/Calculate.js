@@ -10,6 +10,7 @@ const calculatePrompt = (prompt) => {
     switch(prompt){
         case "iteration":
             document.getElementById('iteration').classList.toggle('show-prompt')
+            break;
         case "allIteration":
             document.getElementById('allIteration').classList.toggle('show-prompt')
             break;
@@ -19,9 +20,19 @@ const calculatePrompt = (prompt) => {
         case "comission":
             document.getElementById('comission').classList.toggle('show-prompt')
             break;
+        case "iterationAnalyze":
+            document.getElementById('iterationAnalyze').classList.toggle('show-prompt')
+            break;
+        case "allIterationAnalyze":
+            document.getElementById('allIterationAnalyze').classList.toggle('show-prompt')
+            break;
+        case "coefficientAnalyze":
+            document.getElementById('coefficientAnalyze').classList.toggle('show-prompt')
+            break;
     }
 }
-export {calculatePrompt}
+
+export { calculatePrompt };
 
 export default function Calculate(props){
     const [data, setData] = useState(props.dataInCalculate);
@@ -44,28 +55,34 @@ export default function Calculate(props){
                                     <th></th>
                                     <th><div className="table__title-wrapper"><div className="table__title">По всем итерациям</div>
                                             <div className="question" onClick={() => calculatePrompt("allIteration")}></div>
-                                            <div id="allIteration" className="table-prompt">
-                                                <div className="table-prompt__content">
-                                                    <div className="table-prompt__text">Оценка по всем итерациям складывается по общему арифметическому из всех оценок каждой итерации</div>
-                                                    <div className="table-prompt__button" onClick={() => calculatePrompt("allIteration")}>Ок</div>
+                                            <div id="allIteration" className="table-prompt-calc-wrapper">
+                                                <div className="table-prompt-calc">
+                                                    <div className="table-prompt-calc__content">
+                                                        <div className="table-prompt-calc__text">Оценка по всем итерациям складывается по общему арифметическому из всех оценок каждой итерации</div>
+                                                        <div className="table-prompt-calc__button" onClick={() => calculatePrompt("allIteration")}>Ок</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div></th>
                                     <th><div className="table__title-wrapper"><div className="table__title">Коэффициент участия</div>
                                             <div className="question" onClick={() => calculatePrompt("coefficient")}></div>
-                                            <div id="coefficient" className="table-prompt">
-                                                <div className="table-prompt__content">
-                                                    <div className="table-prompt__text">Коэффициент участия - коэффициент, отражающий степень участия студента в достижении результатов итерации проекта</div>
-                                                    <div className="table-prompt__button" onClick={() => calculatePrompt("coefficient")}>Ок</div>
+                                            <div id="coefficient" className="table-prompt-calc-wrapper">
+                                                <div className="table-prompt-calc">
+                                                    <div className="table-prompt-calc__content">
+                                                        <div className="table-prompt-calc__text">Коэффициент участия - коэффициент, отражающий степень участия студента в достижении результатов итерации проекта</div>
+                                                        <div className="table-prompt-calc__button" onClick={() => calculatePrompt("coefficient")}>Ок</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div></th>
                                     <th><div className="table__title-wrapper"><div className="table__title">Оценка экспертной комиссии</div>
                                             <div className="question" onClick={() => calculatePrompt("comission")}></div>
-                                            <div id="comission" className="table-prompt">
-                                                <div className="table-prompt__content">
-                                                    <div className="table-prompt__text">Сводная оценка экспертной комиссии - это итоговый балл от экспертной комиссии, полученный студентами проектной команды, по результатам очной защиты проекта</div>
-                                                    <div className="table-prompt__button" onClick={() => calculatePrompt("comission")}>Ок</div>
+                                            <div id="comission" className="table-prompt-calc-wrapper">
+                                                <div className="table-prompt-calc">
+                                                    <div className="table-prompt-calc__content">
+                                                        <div className="table-prompt-calc__text">Сводная оценка экспертной комиссии - это итоговый балл от экспертной комиссии, полученный студентами проектной команды, по результатам очной защиты проекта</div>
+                                                        <div className="table-prompt-calc__button" onClick={() => calculatePrompt("comission")}>Ок</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div></th>
