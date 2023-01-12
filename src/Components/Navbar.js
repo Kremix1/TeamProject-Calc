@@ -4,23 +4,17 @@ import '../null.scss';
 import './Navbar.scss';
 import logo from '../Images/logo.svg'
 import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
+import { Faq } from "./Faq"; 
+import { pages } from "../App";
 
-export default class NavbarLeft extends Component {
-    constructor(props) {
-        super(props) // функция вызывающая родительский конструктор
-      
-        this.state = {
-           width: window.screen.width,
-        }
-        this.toggleNavbar = this.toggleNavbar.bind(this);
-      }
-    toggleNavbar() {
+export const NavbarLeft = (props) => {
+    
+    const toggleNavbar = () => {
         document.getElementById('nav').classList.toggle('visibility')
     }
-    render(){
         return(
             <>
-                <div className="burger-button" onClick={this.toggleNavbar}></div>
+                <div className="burger-button" onClick={toggleNavbar}></div>
                 <Nav id="nav" className="col-xxxl-12 d-block sidebar visibility"
                     activeKey="/home"
                     >
@@ -33,7 +27,7 @@ export default class NavbarLeft extends Component {
                             className="d-inline-block align-top"
                             alt="Logo"
                         /></Nav.Link>
-                        <div className="close-button" onClick={this.toggleNavbar}></div>
+                        <div className="close-button" onClick={toggleNavbar}></div>
                     </Nav.Item>
                     <Nav.Item className="link">
                         <div
@@ -87,8 +81,15 @@ export default class NavbarLeft extends Component {
                         <Nav.Link className="link__item">Оценка по итерациям</Nav.Link>
                         <Nav.Link className="link__item">Результаты проекта</Nav.Link>
                     </Nav.Item>
+                    <Nav.Item className="link" onClick={() => pages("calculates", props.setPage)}>
+                        <div className="list-image list-image__7"/>
+                        <div className="nav-link" >Калькуляторы</div>
+                    </Nav.Item>
+                    <Nav.Item className="link" onClick={() => pages("faq", props.setPage)}>
+                        <div className="list-image list-image__7"/>
+                        <div className="nav-link" >FAQ</div>
+                    </Nav.Item>
                     </Nav>
             </>
-        )
-    }
+    )
 }
