@@ -21,12 +21,12 @@ export const IterationTable = (props) => {
                         <Table striped bordered className="table-mobile">
                             <tbody>
                                 <tr>
-                                    <th><div className="table__title-wrapper"><div className="table__title">Пользователь</div></div></th>
-                                    <th><div className="table__title-wrapper"><div className="table__title">Анализ</div></div></th>
-                                    <th><div className="table__title-wrapper"><div className="table__title">Проектирование</div></div></th>
-                                    <th><div className="table__title-wrapper"><div className="table__title">Разработка</div></div></th>
-                                    <th><div className="table__title-wrapper"><div className="table__title">Тестирование</div></div></th>
-                                    <th><div className="table__title-wrapper"><div className="table__title">Презентация</div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__titleInner">Пользователь</div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__titleInner">Анализ</div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__titleInner">Проектирование</div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__titleInner">Разработка</div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__titleInner">Тестирование</div></div></th>
+                                    <th><div className="table__title-wrapper"><div className="table__titleInner">Презентация</div></div></th>
                                 </tr>
                                 <tr>
                                     <td><strong>Куратор: </strong>Шестеров Михаил Андреевич</td>

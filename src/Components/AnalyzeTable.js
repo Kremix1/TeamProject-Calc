@@ -9,6 +9,12 @@ const IterationInput = ({name, row, onChange}) => {
     return <input placeholder="0" name={name} value={row[name]} onChange={(e) => onChange(e, row.identify)}/>
 }
 
+const IterationOutput = ({name, row}) => {
+    if(name === 'total')
+        return <div className={'table__total ' + row.totalColor}>{row[name]}</div>
+    return <div className={'table__output '}>{row[name]}</div>
+}
+
 const Advise = (data, setAdvise, setAdviseClass) => {
     let maxSum = 0;
     for (var i = 0; i < data.length; i++) {
@@ -89,7 +95,6 @@ const Advise = (data, setAdvise, setAdviseClass) => {
         }
         setAdvise(adviseString)
         setAdviseClass('advise')
-        console.log(adviseString)
     }
 
 
@@ -136,17 +141,17 @@ export const AnalyzeTable = (props) => {
                 <tr key={row.identify}>
                 <td>{row.personName}</td>
                 <td className="center">
-                    <div className="table__input-place gray"></div>
+                    <div className="table__input-place disable"></div>
                 </td>
                 <td className="center">
                         <form onSubmit={(e) => handleSubmit(e)} className="table__input-place">
-                            <IterationInput name='allIteration' onChange={(e) => onChange(e, row.identify)} row={row} />
+                            <IterationOutput name='allIteration' row={row}/>
                         </form>
                 </td>
                 <td className="center">
                     <div className="table__input-place">
                         <form onSubmit={(e) => handleSubmit(e)}>
-                            <IterationInput name='coefficient' onChange={(e) => onChange(e, row.identify)} row={row} />
+                            <IterationOutput name='coefficient' row={row}/>
                         </form>
                     </div>
                 </td>

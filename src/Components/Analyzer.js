@@ -37,29 +37,35 @@ export default function Analyzer(props){
                                 <tr>
                                     <th></th>
                                     <th><div className="table__title-wrapper"><div className="table__title button" onClick={() => showIterationTable(render, setRender)}>Итерации(Нажми)</div>
-                                        <div className="question" onClick={() => calculatePrompt("iteration")}></div>
-                                        <div id="iteration" className="table-prompt">
-                                            <div className="table-prompt__content">
-                                                <div className="table-prompt__text">Таблица с вводом оценок по каждой конкретной итерации</div>
-                                                <div className="table-prompt__button" onClick={() => calculatePrompt("iteration")}>Ок</div>
+                                        <div className="question" onClick={() => calculatePrompt("iterationAnalyze")}></div>
+                                        <div id="iterationAnalyze" className="table-prompt-analyze-wrapper">
+                                            <div className="table-prompt">
+                                                <div className="table-prompt__content">
+                                                    <div className="table-prompt__text">Таблица с вводом оценок по каждой конкретной итерации</div>
+                                                    <div className="table-prompt__button" onClick={() => calculatePrompt("iterationAnalyze")}>Ок</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div></th>
                                     <th><div className="table__title-wrapper"><div className="table__title">По всем итерациям</div>
-                                        <div className="question" onClick={() => calculatePrompt("allIteration")}></div>
-                                        <div id="allIteration" className="table-prompt">
-                                            <div className="table-prompt__content">
-                                                <div className="table-prompt__text">Оценка по всем итерациям складывается по общему арифметическому из всех оценок каждой итерации</div>
-                                                <div className="table-prompt__button" onClick={() => calculatePrompt("allIteration")}>Ок</div>
+                                        <div className="question" onClick={() => calculatePrompt("allIterationAnalyze")}></div>
+                                        <div id="allIterationAnalyze" className="table-prompt-analyze-wrapper">
+                                            <div className="table-prompt">
+                                                <div className="table-prompt__content">
+                                                    <div className="table-prompt__text">Оценка по всем итерациям складывается по общему арифметическому из всех оценок каждой итерации</div>
+                                                    <div className="table-prompt__button" onClick={() => calculatePrompt("allIterationAnalyze")}>Ок</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div></th>
                                     <th><div className="table__title-wrapper"><div className="table__title">Коэффициент участия</div>
-                                        <div className="question" onClick={() => calculatePrompt("coefficient")}></div>
-                                        <div id="coefficient" className="table-prompt">
-                                            <div className="table-prompt__content">
-                                                <div className="table-prompt__text">Коэффициент участия - коэффициент, отражающий степень участия студента в достижении результатов итерации проекта</div>
-                                                <div className="table-prompt__button" onClick={() => calculatePrompt("coefficient")}>Ок</div>
+                                        <div className="question" onClick={() => calculatePrompt("coefficientAnalyze")}></div>
+                                        <div id="coefficientAnalyze" className="table-prompt-analyze-wrapper">
+                                            <div className="table-prompt">
+                                                <div className="table-prompt__content">
+                                                    <div className="table-prompt__text">Коэффициент участия - коэффициент, отражающий степень участия студента в достижении результатов итерации проекта</div>
+                                                    <div className="table-prompt__button" onClick={() => calculatePrompt("coefficientAnalyze")}>Ок</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div></th>
