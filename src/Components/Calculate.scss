@@ -111,6 +111,16 @@
         text-align: center;
         border: #B5183E solid 2px;
     }
+    &__output{
+        width: 70px;
+        height: 24px;
+        background-color: #7f7f80;
+        border-radius: 15px;
+        text-align: center;
+        border: #7f7f80 solid 2px;
+        line-height: 20px;
+        color: #fff;
+    }
     &__title-wrapper{
         display: flex;
         flex-direction: row;

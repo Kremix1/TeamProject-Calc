@@ -6,6 +6,12 @@ const IterationInput = ({name, row, onChange}) => {
     return <input placeholder="0" onSubmit={(e) => handleSubmit(e)} name={name} value={row[name]} onChange={(e) => onChange(e, row.identify)}/>
 }
 
+const IterationOutput = ({name, row}) => {
+    if(name === 'total')
+        return <div className={'table__total ' + row.totalColor}>{row[name]}</div>
+    return <div className={'table__output '}>{row[name]}</div>
+}
+
 const TotalButton = (data, setData) => {
     var maxIteration = 0;
     for (var i = 0; i < data.length; i++) {
@@ -59,7 +65,7 @@ export const RenderTable = (props) => {
                     <td className="center">
                         <div className="table__input-place">
                             <form onSubmit={(e) => handleSubmit(e)}>
-                                <IterationInput name='coefficient' onChange={(e) => onChange(e, row.identify)} row={row} /> 
+                                <IterationOutput name='coefficient' row={row}/>
                             </form>
                         </div>
                     </td>
@@ -72,7 +78,7 @@ export const RenderTable = (props) => {
                     </td>
                     <td className="center">
                         <div className="table__input-place">
-                            <div className={'table__total ' + row.totalColor}>{row.total}</div>
+                            <IterationOutput name='total' row={row}/>
                         </div>
                     </td>
                 </tr>
