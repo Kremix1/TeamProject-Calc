@@ -20,6 +20,7 @@
 .question-list{
     display: flex;
     flex-direction: column;
+    margin: 0 0 60px 0;
     &__questions{
         font-size: 22px;
     }
@@ -27,8 +28,20 @@
         font-size: 18px;
         margin: 0 0 20px 0;
     }
-    &__cases{
-        font-size: 22px;
+}
+
+.cases-list{
+    &__title{
+        font-size: 24px;
+        margin: 0 0 25px 0;
+        font-weight: 600;
+    }
+    &__item{
+        font-size: 18px;
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 75px 0;
+        align-items: center;
     }
 }
 
@@ -45,6 +58,34 @@
         color: #fff;
         border-radius: 5px;
         line-height: 24px;
+    }
+    &__case{
+        background-color: #d7d7d7;
+        padding: 15px 10px;
+        display: flex;
+        width: fit-content;
+        margin: 0 0 10px 0;
+        border-radius: 5px;
+        flex-direction: column;
+        flex: 35% 0 1;
+    }
+    &__arrow{
+        width: 50px;
+        height: 50px;
+        background: url('../Images/arrow.svg')0 0/100% 100% no-repeat;
+        margin: 0 0 10px 0;
+        transform: rotate(90deg);
+    }
+    &__solution{
+        background-color: #25bd74;
+        padding: 10px;
+        display: flex;
+        width: fit-content;
+        color: #fff;
+        border-radius: 5px;
+        line-height: 24px;
+        flex: 35% 1 1;
+        margin: 0 0 25px 0;
     }
 }
 
@@ -63,5 +104,20 @@
         margin: 0 0 10px 0;
         border-radius: 5px;
         flex-direction: column;
+    }
+}
+
+@media (min-width: 1024px) {
+    .cases-list{
+        &__item{
+            flex-direction: row;
+            margin: 0;
+        }
+    }
+    .item{
+        &__arrow{
+            transform: rotate(0deg);
+            flex: 5% 1 1;
+        }
     }
 }

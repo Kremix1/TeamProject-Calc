@@ -25,11 +25,23 @@ export const Faq = () => {
             answer: 'Потому что максимальная взаимная оценка студентов = 30 баллам. Калькулятор даёт совет только для студентов, так как на мнение куратора мы не имеем право влиять',
         },
     ])
+    
+    const [cases, setCases] = useState([
+        {
+            case: 'Один или несколько студентов пропустили оценивание одной или нескольких итераций и хотят улучшить своё положение.',
+            solution: 'Если ещё есть не оцененные итерации, то воспользоваться «Калькулятором промежуточной оценки» (он же «Анализатор) и следовать шагам из совета. Иначе – уже ничего не исправить.',
+        },
+        {
+            case: 'Оценивание по всем итерациям закончилось и хотелось бы узнать сколько баллов выйдет у каждого студента в зависимости от оценки экспертной комиссии.',
+            solution: 'Воспользоваться «Калькулятором итоговой оценки».',
+        },
+    ])
+
     return (
         <div className="wrapper">
             <div className="faq">
                 <h1 className="faq__title">Это раздел FAQ</h1>
-                <h2 className="faq__about">В данном разделе собраны наиболее задаваемые вопросы.</h2>
+                <h2 className="faq__about">В данном разделе собраны наиболее задаваемые вопросы и ситуации.</h2>
                 <div className="question-list">
                     {questions.map(item =>
                         <div key={item.id} className="question-list__item">
@@ -40,8 +52,21 @@ export const Faq = () => {
                             <div className="item__answer">{item.answer}</div>
                         </div>
                     )}
-                    <div className="question-list__cases">Частые ситуации:</div>
                 </div>
+                <div className="cases-list">
+                    <div className="cases-list__title">Возможные ситуации:</div>
+                    {cases.map(item =>
+                        <div key={item.id} className='cases-list__item'>
+                            <div className="item__case">
+                                <div></div>
+                                <div>{item.case}</div>
+                            </div>
+                            <div className="item__arrow"></div>
+                            <div className="item__solution">{item.solution}</div>
+                        </div>    
+                    )}
+                </div>
+                    
             </div>
         </div>
     )
