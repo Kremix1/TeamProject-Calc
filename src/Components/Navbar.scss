@@ -34,7 +34,7 @@
     transition: 0.5s;
     min-height: 100vh !important;
 
-    width: 250px;
+    min-width: 260px;
     z-index: 100;
     padding: 0 0;
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
@@ -157,7 +157,7 @@
 .burger-button{
     z-index: 100;
     position: absolute;
-    top: 2.5%;
+    top: 1.7%;
     left: 2.5%;
     width: 17px;
     height: 20px;
