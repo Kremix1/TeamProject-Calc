@@ -1,9 +1,67 @@
 .wrapper{
     width: 100%;
     height: 100%;
+    font-size: 16px;
 }
 
 .faq{
     width: 100%;
     height: 100%;
+    &__title{
+        font-size: 24px;
+        font-weight: 600;
+        margin: 0 0 10px 0;
+    }
+    &__about{
+        font-size: 22px;
+        margin: 0 0 25px 0;
+    }
+}
+.question-list{
+    display: flex;
+    flex-direction: column;
+    &__questions{
+        font-size: 22px;
+    }
+    &__item{
+        font-size: 18px;
+        margin: 0 0 20px 0;
+    }
+    &__cases{
+        font-size: 22px;
+    }
+}
+
+.item{
+    &__question{
+        display: flex;
+        align-items: center;
+    }
+    &__answer{
+        background-color: #25bd74;
+        padding: 10px;
+        display: flex;
+        width: fit-content;
+        color: #fff;
+        border-radius: 5px;
+        line-height: 24px;
+    }
+}
+
+.question{
+    &__img{
+        width: 30px;
+        height: 30px;
+        background: url('../Images/avatar.svg') 0 0/100% 100% no-repeat;
+        margin: 0 10px 10px 0;
+    }
+    &__body{
+        background-color: #d7d7d7;
+        padding: 5px 10px;
+        display: flex;
+        width: fit-content;
+        margin: 0 0 10px 0;
+        border-radius: 5px;
+        flex-direction: column;
+    }
 }
