@@ -17,16 +17,15 @@ const validateData = (dataItem) => {
     (dataItem.iterationPres <= 100 && dataItem.iterationPres >= 0 && (Number.isInteger(parseInt(dataItem.iterationPres, 10)) || dataItem.iterationPres == ""))) ? true : false;
 }
 
-const Advise = (data, advise, setAdvise, setAdviseClass) => {
+const Advise = (data, setErrClass, setAdvise, setAdviseClass) => {
     let maxSum = 0;
     for (var i = 0; i < data.length; i++) {
         if(!validateData(data[i])){
-            console.log('1')
-            setAdvise('Вводите в таблицу итераций Числа! (от 0 до 100)')
-            setAdviseClass('advise')
-            let isTableFilled = false
+            setErrClass('err')
+            setAdviseClass('advise-hide')
             return false;
         }
+        setErrClass('err-hide')
         let iterationsSum = Number(data[i].iterationAnalyze)
         + Number(data[i].iterationDesign)
         + Number(data[i].iterationDev)
@@ -104,7 +103,6 @@ const Advise = (data, advise, setAdvise, setAdviseClass) => {
         }
         setAdvise(adviseString)
         console.log(adviseString)
-        console.log(advise)
         setAdviseClass('advise')
     }
 
@@ -126,6 +124,8 @@ const handleSubmit = (e) =>{
 let adviseString = []
 export const AnalyzeTable = (props) => {
     const [advise, setAdvise] = useState('');
+    const [err, setErr] = useState('Вводите в таблицу итераций Числа! (от 0 до 100)');
+    const [errClass, setErrClass] = useState('err-hide')
     const [adviseClass, setAdviseClass] = useState('');
     const onChange = (e, rowId) => {
         const {name, value} = e.target
@@ -159,12 +159,13 @@ export const AnalyzeTable = (props) => {
                 </td>
                 </tr>
             )}
-        <div className="table-wrapper__button" onClick={() => Advise(props.dataInCalculate, advise, setAdvise, setAdviseClass)}>Получить совет</div>
+        <div className="table-wrapper__button" onClick={() => Advise(props.dataInCalculate, setErrClass, setAdvise, setAdviseClass)}>Получить совет</div>
         <div className={adviseClass}>
             {adviseString.map(row =>
                 <div key={row}>{row}</div>
                 )}
         </div>
+        <div className={errClass}>{err}</div>
         </>
     );
 }
