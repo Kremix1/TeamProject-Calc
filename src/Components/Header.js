@@ -26,7 +26,7 @@ export default class Header extends Component{
                         <div className="questions__third" onClick={this.showPrompt}></div>
                     </div>
                     <div className="header__user">
-                        <div className="user__name">Жмышенко Валерий Альбертович</div>
+                        <div className="user__name">***</div>
                         <div className="user__avatar"></div>
                         <div className="user__arrow"></div>
                     </div>

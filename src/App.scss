@@ -59,3 +59,27 @@
 
     }
   }
+  .header-message{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    font-size: 22px;
+    font-weight: 600;
+    &__body{
+      border: red 2px solid;
+      border-radius: 15px;
+      padding: 0 15px;
+    }
+  }
+  .flag{
+    margin: 0px 20px;
+    width: 3vw;
+    height: 3vw;
+    background: url('./Images/redflag.svg')0 0/100% 100% no-repeat;
+  }
+  @media (max-width: 1300px) {
+    .flag{
+      width: 10vw;
+      height: 10vw;
+    }
+  }
