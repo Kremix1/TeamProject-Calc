@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import '../null.scss';
 import './RenderTable.scss'
 
@@ -12,9 +12,19 @@ const IterationOutput = ({name, row}) => {
     return <div className={'table__output '}>{row[name]}</div>
 }
 
-const TotalButton = (data, setData) => {
+const validateData = (dataItem) => {
+    return ((dataItem.allIteration <= 500 && dataItem.allIteration >= 0 && Number.isInteger(parseInt(dataItem.allIteration, 10))) &&
+        (dataItem.comission <= 100 && dataItem.comission >= 0 && Number.isInteger(parseInt(dataItem.comission, 10)))) ? true : false;
+}
+
+const TotalButton = (data, setData, setErrClass) => {
     var maxIteration = 0;
     for (var i = 0; i < data.length; i++) {
+        if(!validateData(data[i])){
+            setErrClass('err')
+            return false;
+        }
+        setErrClass('err-hide')
         maxIteration = Math.max(maxIteration, data[i].allIteration)
     }
     setData(
@@ -42,7 +52,8 @@ const handleSubmit = (e) =>{
 }
 
 export const RenderTable = (props) => {
-
+    const [err, setErr] = useState('Вводите в таблицу Числа! (от 0 до 100). "По всем итерациям" - вводите от 0 до 500')
+    const [errClass, setErrClass] = useState('err-hide');
     const onChange = (e, rowId) => {
         const {name, value} = e.target
         props.setData(
@@ -83,7 +94,8 @@ export const RenderTable = (props) => {
                     </td>
                 </tr>
                 )}
-                <div className="table-wrapper__button" onClick={() => TotalButton(props.data, props.setData)}>Рассчитать</div>
+                <div className="table-wrapper__button" onClick={() => TotalButton(props.data, props.setData, setErrClass)}>Рассчитать</div>
+                <div className={errClass}>{err}</div>
             </>
         );
     }
