@@ -97,7 +97,7 @@ export default function Calculate(props){
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                <RenderTable isCalculate={true} data={data} setData={setData} />
+                                <RenderTable isCalculate={true} data={data} setData={setData} comission={props.comission} setComission={props.setComission}/>
                             </tbody>
                         </Table>
                     </div>

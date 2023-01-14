@@ -10,14 +10,16 @@ import { Faq } from './Components/Faq';
 
 function App() {
   const [page, setPage] = useState('calculates')
+  const [key, setKey] = useState('');
+  const [comission, setComission] = useState('');
   const [dataInCalculate, setDataInCalculate] = useState([
     {
-        personName: "Клок Тимофей Алексеевич",
+        personName: "Студент 1",
         identify: "1",
         iteration: "",
         allIteration: "",
         coefficient: "",
-        comission: "",
+        comission: comission,
         total: "0",
         iterationAnalyze: "",
         iterationDesign: "",
@@ -27,12 +29,12 @@ function App() {
         totalColor: "red",
       },
       {
-        personName: "Моисеев Денис Александрович",
+        personName: "Студент 2",
         identify: "2",
         iteration: "",
         allIteration: "",
         coefficient: "",
-        comission: "",
+        comission: comission,
         total: "0",
         iterationAnalyze: "",
         iterationDesign: "",
@@ -42,12 +44,12 @@ function App() {
         totalColor: "red",
       },
       {
-        personName: "Несмелов Павел Евгеньевич",
+        personName: "Студент 3",
         identify: "3",
         iteration: "",
         allIteration: "",
         coefficient: "",
-        comission: "",
+        comission: comission,
         total: "0",
         iterationAnalyze: "",
         iterationDesign: "",
@@ -57,12 +59,12 @@ function App() {
         totalColor: "red",
       },
       {
-        personName: "Соколов Михаил Иванович",
+        personName: "Студент 4",
         identify: "4",
         iteration: "",
         allIteration: "",
         coefficient: "",
-        comission: "",
+        comission: comission,
         total: "0",
         iterationAnalyze: "",
         iterationDesign: "",
@@ -72,12 +74,12 @@ function App() {
         totalColor: "red",
       },
       {
-        personName: "Фокин Богдан Сергеевич",
+        personName: "Студент 5",
         identify: "5",
         iteration: "",
         allIteration: "",
         coefficient: "",
-        comission: "",
+        comission: comission,
         total: "0",
         iterationAnalyze: "",
         iterationDesign: "",
@@ -86,7 +88,35 @@ function App() {
         iterationPres: "",
         totalColor: "red",
       },
-])
+  ])
+  const addStudent = (dataInCalculate, setDataInCalculate) => {
+    let id = dataInCalculate.length + 1;
+    if(id > 10)
+      return (alert('В вашей команде не может быть больше 10 человек'));
+    setDataInCalculate([...dataInCalculate, {
+      personName: "Студент " + id,
+      identify: id.toString(),
+      iteration: "",
+      allIteration: "",
+      coefficient: "",
+      comission: comission,
+      total: "0",
+      iterationAnalyze: "",
+      iterationDesign: "",
+      iterationDev: "",
+      iterationTest: "",
+      iterationPres: "",
+      totalColor: "red",
+    }]);
+    setKey(Math.random());
+  }
+  const removeStudent = (dataInCalculate, setDataInCalculate) => {
+    let id = dataInCalculate.length;
+    if(id < 2)
+      return (alert('В вашей команде не может быть меньше 1 человека'));
+    setDataInCalculate(dataInCalculate.slice(0, dataInCalculate.length - 1));
+    setKey(Math.random());
+  }
   switch(page){
     case "calculates":
       return(
@@ -98,12 +128,19 @@ function App() {
               <div className="wrapper__inner-content">
                 <p><a href="#" className='inner-content__link'>Список проектов</a> {'>'}  21/ЛКП-1579-2022. Создание калькулятора оценок в Teamproject 2  (2)</p>
                 <div className='header-message'>
-                <div className='flag'></div>
-                  <h2 className='header-message__body'>Баллы куратора не учитываются при формировании коэффициента участия</h2>
-                <div className='flag'></div>
+                  <div className='flag'></div>
+                    <h2 className='header-message__body'>Баллы куратора не учитываются при формировании коэффициента участия</h2>
+                  <div className='flag'></div>
                 </div>
-                <Calculate dataInCalculate={dataInCalculate} setDataInCalculate={setDataInCalculate}/>
-                <Analyzer dataInCalculate={dataInCalculate} setDataInCalculate={setDataInCalculate}/>
+                <div className="add-student" onClick={() => addStudent(dataInCalculate, setDataInCalculate)}>Добавить студента</div>
+                <div className="remove-student" onClick={() => removeStudent(dataInCalculate, setDataInCalculate)}>Удалить студента</div>
+                <Calculate key={key} dataInCalculate={dataInCalculate} setDataInCalculate={setDataInCalculate} comission={comission} setComission={setComission}/>
+                <div className='header-message'>
+                  <div className='flag'></div>
+                    <h2 className='header-message__body'>"Анализатор" используется, если ещё остались неоцененные итерации</h2>
+                  <div className='flag'></div>
+                </div>
+                <Analyzer key={key + 1} dataInCalculate={dataInCalculate} setDataInCalculate={setDataInCalculate}/>
               </div>
             </div>
           </div>

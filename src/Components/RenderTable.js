@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { propTypes } from "react-bootstrap/esm/Image";
 import '../null.scss';
 import './RenderTable.scss'
 
@@ -62,6 +63,15 @@ export const RenderTable = (props) => {
             )
         );
     };
+    const changeComission = (e) => {
+        props.setComission(e.target.value)
+        const {name, value} = e.target
+        props.setData(
+            props.data.map((row) =>
+                row = {...row, [name]: value}
+            )
+        );
+    }
     if(props.isCalculate){
         return(
             <>
@@ -83,7 +93,7 @@ export const RenderTable = (props) => {
                     <td className="center">
                         <div className="table__input-place">
                             <form onSubmit={(e) => handleSubmit(e)}>
-                                <IterationInput name='comission' onChange={(e) => onChange(e, row.identify)} row={row} /> 
+                                <input placeholder="0" onSubmit={(e) => handleSubmit(e)} name={'comission'} value={props.comission} onChange={(e) => changeComission(e)}/>
                             </form>
                         </div>
                     </td>
