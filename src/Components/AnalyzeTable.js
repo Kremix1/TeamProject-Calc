@@ -39,7 +39,7 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass) => {
     if (data[0].iterationPres != "") {
         console.log('1')
         setNoneClass('advise')
-        setAdviseClass('advise')
+        setAdviseClass('advise-hide')
         isTableFilled = true
     }
     else if (data[0].iterationDesign == "") {
