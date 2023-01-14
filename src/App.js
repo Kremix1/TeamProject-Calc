@@ -126,8 +126,9 @@ function App() {
   }
 }
 
-export const pages = (page, setPage) => {
+export const pages = (page, setPage, toggleNavbar) => {
   setPage(page)
+  toggleNavbar();
 }
 
 export default App;

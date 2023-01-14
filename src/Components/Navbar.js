@@ -81,11 +81,11 @@ export const NavbarLeft = (props) => {
                         <Nav.Link className="link__item">Оценка по итерациям</Nav.Link>
                         <Nav.Link className="link__item">Результаты проекта</Nav.Link>
                     </Nav.Item> */}
-                    <Nav.Item className="link" onClick={() => pages("calculates", props.setPage)}>
+                    <Nav.Item className="link" onClick={() => {pages("calculates", props.setPage, toggleNavbar)}}>
                         <div className="list-image list-image__7"/>
                         <div className="nav-link" >Калькуляторы</div>
                     </Nav.Item>
-                    <Nav.Item className="link" onClick={() => pages("faq", props.setPage)}>
+                    <Nav.Item className="link" onClick={() => pages("faq", props.setPage, toggleNavbar)}>
                         <div className="list-image list-image__7"/>
                         <div className="nav-link" >FAQ</div>
                     </Nav.Item>
