@@ -17,7 +17,7 @@ const validateData = (dataItem) => {
     (dataItem.iterationPres <= 100 && dataItem.iterationPres >= 0 && (Number.isInteger(parseInt(dataItem.iterationPres, 10)) || dataItem.iterationPres == ""))) ? true : false;
 }
 
-const Advise = (data, setErrClass, setAdvise, setAdviseClass) => {
+const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass) => {
     let maxSum = 0;
     for (var i = 0; i < data.length; i++) {
         if(!validateData(data[i])){
@@ -25,6 +25,7 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass) => {
             setAdviseClass('advise-hide')
             return false;
         }
+        setAdviseClass('advise')
         setErrClass('err-hide')
         let iterationsSum = Number(data[i].iterationAnalyze)
         + Number(data[i].iterationDesign)
@@ -36,7 +37,8 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass) => {
     }
     let isTableFilled = false
     if (data[0].iterationPres != "") {
-        setAdvise('Ничего уже не изменить, нужно было думать раньше!')
+        console.log('1')
+        setNoneClass('advise')
         setAdviseClass('advise')
         isTableFilled = true
     }
@@ -101,8 +103,6 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass) => {
         for (var i = 0; i < data.length; i++) {
             adviseString.push("Студента " + data[i].personName + " нужно оценить всем на " + Math.round(data[i].iterationPres / 0.3) + " баллов в неоцененных итерациях.")
         }
-        setAdvise(adviseString)
-        console.log(adviseString)
         setAdviseClass('advise')
     }
 
@@ -123,8 +123,10 @@ const handleSubmit = (e) =>{
 }
 let adviseString = []
 export const AnalyzeTable = (props) => {
+    const [noneClass, setNoneClass] = useState('advise-hide');
+    const [adviseNone, setAdviseNone] = useState('Ничего уже не изменить, нужно было думать раньше!');
     const [advise, setAdvise] = useState('');
-    const [err, setErr] = useState('Вводите в таблицу итераций Числа! (от 0 до 100)');
+    const [err, setErr] = useState('Вводите в таблицу итераций Целые числа! (от 0 до 100)');
     const [errClass, setErrClass] = useState('err-hide')
     const [adviseClass, setAdviseClass] = useState('');
     const onChange = (e, rowId) => {
@@ -159,12 +161,13 @@ export const AnalyzeTable = (props) => {
                 </td>
                 </tr>
             )}
-        <div className="table-wrapper__button" onClick={() => Advise(props.dataInCalculate, setErrClass, setAdvise, setAdviseClass)}>Получить совет</div>
+        <div className="table-wrapper__button" onClick={() => Advise(props.dataInCalculate, setErrClass, setAdvise, setAdviseClass, setNoneClass)}>Получить совет</div>
         <div className={adviseClass}>
             {adviseString.map(row =>
                 <div key={row}>{row}</div>
-                )}
+            )}
         </div>
+        <div className={noneClass}>{adviseNone}</div>
         <div className={errClass}>{err}</div>
         </>
     );

@@ -52,7 +52,7 @@ const handleSubmit = (e) =>{
 }
 
 export const RenderTable = (props) => {
-    const [err, setErr] = useState('Вводите в таблицу Числа! (от 0 до 100). "По всем итерациям" - вводите от 0 до 500')
+    const [err, setErr] = useState('Вводите в таблицу Целые Числа! (от 0 до 100). "По всем итерациям" - вводите от 0 до 500')
     const [errClass, setErrClass] = useState('err-hide');
     const onChange = (e, rowId) => {
         const {name, value} = e.target
