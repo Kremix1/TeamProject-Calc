@@ -17,11 +17,12 @@ const validateData = (dataItem) => {
     (dataItem.iterationPres <= 100 && dataItem.iterationPres >= 0 && (Number.isInteger(parseInt(dataItem.iterationPres, 10)) || dataItem.iterationPres == ""))) ? true : false;
 }
 
-const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass) => {
+const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setAdviseNone) => {
     let maxSum = 0;
     for (var i = 0; i < data.length; i++) {
         if(!validateData(data[i])){
             setErrClass('err')
+            setNoneClass('advise-hide')
             setAdviseClass('advise-hide')
             return false;
         }
@@ -161,7 +162,7 @@ export const AnalyzeTable = (props) => {
                 </td>
                 </tr>
             )}
-        <div className="table-wrapper__button" onClick={() => Advise(props.dataInCalculate, setErrClass, setAdvise, setAdviseClass, setNoneClass)}>Получить совет</div>
+        <div className="table-wrapper__button" onClick={() => Advise(props.dataInCalculate, setErrClass, setAdvise, setAdviseClass, setNoneClass, setAdviseNone)}>Получить совет</div>
         <div className={adviseClass}>
             {adviseString.map(row =>
                 <div key={row}>{row}</div>

@@ -29,7 +29,7 @@ export const NavbarLeft = (props) => {
                         /></Nav.Link>
                         <div className="close-button" onClick={toggleNavbar}></div>
                     </Nav.Item>
-                    <Nav.Item className="link">
+                    {/* <Nav.Item className="link">
                         <div
                             className="list-image list-image__1"
                         />
@@ -80,7 +80,7 @@ export const NavbarLeft = (props) => {
                         </div>
                         <Nav.Link className="link__item">Оценка по итерациям</Nav.Link>
                         <Nav.Link className="link__item">Результаты проекта</Nav.Link>
-                    </Nav.Item>
+                    </Nav.Item> */}
                     <Nav.Item className="link" onClick={() => pages("calculates", props.setPage)}>
                         <div className="list-image list-image__7"/>
                         <div className="nav-link" >Калькуляторы</div>

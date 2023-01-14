@@ -97,6 +97,11 @@ function App() {
               <Header />
               <div className="wrapper__inner-content">
                 <p><a href="#" className='inner-content__link'>Список проектов</a> {'>'}  21/ЛКП-1579-2022. Создание калькулятора оценок в Teamproject 2  (2)</p>
+                <div className='header-message'>
+                <div className='flag'></div>
+                  <h2 className='header-message__body'>Баллы куратора не учитываются при формировании коэффициента участия</h2>
+                <div className='flag'></div>
+                </div>
                 <Calculate dataInCalculate={dataInCalculate} setDataInCalculate={setDataInCalculate}/>
                 <Analyzer dataInCalculate={dataInCalculate} setDataInCalculate={setDataInCalculate}/>
               </div>
