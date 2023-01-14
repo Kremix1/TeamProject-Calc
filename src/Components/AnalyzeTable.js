@@ -10,11 +10,11 @@ const IterationOutput = ({name, row}) => {
 }
 
 const validateData = (dataItem) => {
-    return ((dataItem.iterationAnalyze <= 100 && dataItem.iterationAnalyze >= 0 && (Number.isInteger(parseInt(dataItem.iterationAnalyze, 10)) || dataItem.iterationAnalyze == "")) &&
-    (dataItem.iterationDesign <= 100 && dataItem.iterationDesign >= 0 && (Number.isInteger(parseInt(dataItem.iterationDesign, 10)) || dataItem.iterationDesign == "")) &&
-    (dataItem.iterationDev <= 100 && dataItem.iterationDev >= 0 && (Number.isInteger(parseInt(dataItem.iterationDev, 10)) || dataItem.iterationDev == "")) &&
-    (dataItem.iterationTest <= 100 && dataItem.iterationTest >= 0 && (Number.isInteger(parseInt(dataItem.iterationTest, 10)) || dataItem.iterationTest == "")) &&
-    (dataItem.iterationPres <= 100 && dataItem.iterationPres >= 0 && (Number.isInteger(parseInt(dataItem.iterationPres, 10)) || dataItem.iterationPres == ""))) ? true : false;
+    return ((dataItem.iterationAnalyze <= 100 && dataItem.iterationAnalyze >= 0 && (((dataItem.iterationAnalyze.indexOf('.') == -1)) || dataItem.iterationAnalyze == "")) &&
+    (dataItem.iterationDesign <= 100 && dataItem.iterationDesign >= 0 && (((dataItem.iterationDesign.indexOf('.') == -1)) || dataItem.iterationDesign == "")) &&
+    (dataItem.iterationDev <= 100 && dataItem.iterationDev >= 0 && (((dataItem.iterationDev.indexOf('.') == -1)) || dataItem.iterationDev == "")) &&
+    (dataItem.iterationTest <= 100 && dataItem.iterationTest >= 0 && (((dataItem.iterationTest.indexOf('.') == -1)) || dataItem.iterationTest == "")) &&
+    (dataItem.iterationPres <= 100 && dataItem.iterationPres >= 0 && (((dataItem.iterationPres.indexOf('.') == -1)) || dataItem.iterationPres == ""))) ? true : false;
 }
 
 const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setAdviseNone) => {
@@ -38,7 +38,6 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setA
     }
     let isTableFilled = false
     if (data[0].iterationPres != "") {
-        console.log('1')
         setNoneClass('advise')
         setAdviseClass('advise-hide')
         isTableFilled = true
