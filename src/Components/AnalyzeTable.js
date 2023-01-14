@@ -2,12 +2,6 @@ import {React, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../null.scss'
 import './Calculate.scss'
-import { IterationTable } from "./IterationTable";
-
-
-const IterationInput = ({name, row, onChange}) => {
-    return <input placeholder="0" name={name} value={row[name]} onChange={(e) => onChange(e, row.identify)}/>
-}
 
 const IterationOutput = ({name, row}) => {
     if(name === 'total')
@@ -15,9 +9,23 @@ const IterationOutput = ({name, row}) => {
     return <div className={'table__output '}>{row[name]}</div>
 }
 
-const Advise = (data, setAdvise, setAdviseClass) => {
+const validateData = (dataItem) => {
+    return ((dataItem.iterationAnalyze <= 100 && dataItem.iterationAnalyze >= 0 && (Number.isInteger(parseInt(dataItem.iterationAnalyze, 10)) || dataItem.iterationAnalyze == "")) &&
+    (dataItem.iterationDesign <= 100 && dataItem.iterationDesign >= 0 && (Number.isInteger(parseInt(dataItem.iterationDesign, 10)) || dataItem.iterationDesign == "")) &&
+    (dataItem.iterationDev <= 100 && dataItem.iterationDev >= 0 && (Number.isInteger(parseInt(dataItem.iterationDev, 10)) || dataItem.iterationDev == "")) &&
+    (dataItem.iterationTest <= 100 && dataItem.iterationTest >= 0 && (Number.isInteger(parseInt(dataItem.iterationTest, 10)) || dataItem.iterationTest == "")) &&
+    (dataItem.iterationPres <= 100 && dataItem.iterationPres >= 0 && (Number.isInteger(parseInt(dataItem.iterationPres, 10)) || dataItem.iterationPres == ""))) ? true : false;
+}
+
+const Advise = (data, setErrClass, setAdvise, setAdviseClass) => {
     let maxSum = 0;
     for (var i = 0; i < data.length; i++) {
+        if(!validateData(data[i])){
+            setErrClass('err')
+            setAdviseClass('advise-hide')
+            return false;
+        }
+        setErrClass('err-hide')
         let iterationsSum = Number(data[i].iterationAnalyze)
         + Number(data[i].iterationDesign)
         + Number(data[i].iterationDev)
@@ -94,6 +102,7 @@ const Advise = (data, setAdvise, setAdviseClass) => {
             adviseString.push("Студента " + data[i].personName + " нужно оценить всем на " + Math.round(data[i].iterationPres / 0.3) + " баллов в неоцененных итерациях.")
         }
         setAdvise(adviseString)
+        console.log(adviseString)
         setAdviseClass('advise')
     }
 
@@ -115,6 +124,8 @@ const handleSubmit = (e) =>{
 let adviseString = []
 export const AnalyzeTable = (props) => {
     const [advise, setAdvise] = useState('');
+    const [err, setErr] = useState('Вводите в таблицу итераций Числа! (от 0 до 100)');
+    const [errClass, setErrClass] = useState('err-hide')
     const [adviseClass, setAdviseClass] = useState('');
     const onChange = (e, rowId) => {
         const {name, value} = e.target
@@ -148,12 +159,13 @@ export const AnalyzeTable = (props) => {
                 </td>
                 </tr>
             )}
-        <div className="table-wrapper__button" onClick={() => Advise(props.dataInCalculate, setAdvise, setAdviseClass)}>Получить совет</div>
+        <div className="table-wrapper__button" onClick={() => Advise(props.dataInCalculate, setErrClass, setAdvise, setAdviseClass)}>Получить совет</div>
         <div className={adviseClass}>
             {adviseString.map(row =>
                 <div key={row}>{row}</div>
                 )}
         </div>
+        <div className={errClass}>{err}</div>
         </>
     );
 }

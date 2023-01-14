@@ -14,3 +14,23 @@
     background-color: #7f7f80;
     border: #7f7f80 2px solid;
 }
+
+.err{
+    margin-top: 20px;
+    min-width: 240px;
+    padding: 25px 30px;
+    line-height: 16px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: fit-content;
+    height: fit-content;
+    color: #fff;
+    background-color: #B5183E;
+    border-radius: 20px;
+}
+
+.err-hide{
+    display: none;
+}
