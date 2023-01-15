@@ -100,6 +100,7 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setA
     }
 
     if (!isTableFilled) {
+        adviseString = []
         for (var i = 0; i < data.length; i++) {
             adviseString.push("Студента " + data[i].personName + " нужно оценить всем на " + Math.round(data[i].iterationPres / 0.3) + " баллов в неоцененных итерациях.")
         }
