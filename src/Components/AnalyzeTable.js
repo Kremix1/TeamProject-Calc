@@ -44,7 +44,7 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setA
     }
     else if (data[0].iterationDesign == "") {
         for (var i = 0; i < data.length; i++) {
-            let predict =  ((maxSum - data[i].allIteration) / (data.length - 1)).toFixed(2);
+            let predict =  ((maxSum - data[i].allIteration) / (5 - 1)).toFixed(2);
             if (predict > 30) {
                 data[i].iterationDesign = 30;
                 data[i].iterationDev = 30;
@@ -61,7 +61,7 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setA
     }
     else if (data[0].iterationDev == "") {
         for (var i = 0; i < data.length; i++) {
-            let predict = ((maxSum - data[i].allIteration) / (data.length - 2)).toFixed(2);
+            let predict = ((maxSum - data[i].allIteration) / (5 - 2)).toFixed(2);
             if (predict > 30) {
                 data[i].iterationDev = 30;
                 data[i].iterationTest = 30;
@@ -75,7 +75,7 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setA
     }
     else if (data[0].iterationTest == "") {
         for (var i = 0; i < data.length; i++) {
-            let predict =  ((maxSum - data[i].allIteration) / (data.length - 3)).toFixed(2);
+            let predict =  ((maxSum - data[i].allIteration) / (5 - 3)).toFixed(2);
             if (predict > 30) {
                 data[i].iterationTest = 30;
                 data[i].iterationPres = 30;
@@ -88,7 +88,7 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setA
     }
     else if (data[0].iterationPres == "") {
         for (var i = 0; i < data.length; i++) {
-            let predict =  ((maxSum - data[i].allIteration) / (data.length - 4)).toFixed(2);
+            let predict =  ((maxSum - data[i].allIteration) / (5 - 4)).toFixed(2);
             if (predict > 30) {
                 data[i].iterationPres = 30;
             }

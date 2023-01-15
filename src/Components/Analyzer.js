@@ -78,7 +78,7 @@ export default function Analyzer(props){
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                <AnalyzeTable isCalculate={false} dataInCalculate={dataAnalyze} setDataInCalculate={setDataAnalyze}я/>
+                                <AnalyzeTable isCalculate={false} dataInCalculate={dataAnalyze} setDataInCalculate={setDataAnalyze}/>
                             </tbody>
                         </Table>
                     </div>
