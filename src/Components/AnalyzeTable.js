@@ -34,6 +34,8 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setA
         + Number(data[i].iterationTest)
         + Number(data[i].iterationPres);
         data[i].allIterationAnalyze = Math.round(iterationsSum);
+        data[i].allIterationAnalyze = data[i].allIterationAnalyze === NaN ?  0 : data[i].allIterationAnalyze;
+
         maxSum = Math.max(maxSum, iterationsSum);
     }
     let isTableFilled = false
@@ -115,7 +117,9 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setA
         + Number(data[i].iterationDev)
         + Number(data[i].iterationTest)
         + Number(data[i].iterationPres));
+        data[i].allIterationAnalyze = data[i].allIterationAnalyze === NaN ?  0 : data[i].allIterationAnalyze;
         data[i].coefficientAnalyze = (data[i].allIterationAnalyze / maxSum).toFixed(2);
+        data[i].coefficientAnalyze = data[i].coefficientAnalyze === NaN ?  0 : data[i].coefficientAnalyze;
     }
 }
 
@@ -124,7 +128,6 @@ const handleSubmit = (e) =>{
 }
 let adviseString = []
 export const AnalyzeTable = (props) => {
-    const [data, setData] = useState(props.dataInCalculate)
     const [noneClass, setNoneClass] = useState('advise-hide');
     const [adviseNone, setAdviseNone] = useState('Ничего уже не изменить, нужно было думать раньше!');
     const [advise, setAdvise] = useState('');
@@ -143,7 +146,7 @@ export const AnalyzeTable = (props) => {
 
     return(
         <>
-            {data.map(row =>
+            {props.dataInCalculate.map(row =>
                 <tr key={row.identify}>
                 <td>{row.personName}</td>
                 <td className="center">
@@ -163,7 +166,7 @@ export const AnalyzeTable = (props) => {
                 </td>
                 </tr>
             )}
-        <div className="table-wrapper__button" onClick={() => Advise(data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setAdviseNone)}>Получить совет</div>
+        <div className="table-wrapper__button" onClick={() => Advise(props.dataInCalculate, setErrClass, setAdvise, setAdviseClass, setNoneClass, setAdviseNone)}>Получить совет</div>
         <div className={adviseClass}>
             {adviseString.map(row =>
                 <div key={row}>{row}</div>

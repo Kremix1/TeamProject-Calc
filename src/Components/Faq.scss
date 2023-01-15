@@ -51,6 +51,11 @@
         color: #fff;
         border-radius: 5px;
         line-height: 24px;
+        justify-content: center;
+        align-items: center;
+        p{
+            margin: 0;
+        }
     }
     &__case{
         background-color: #d7d7d7;

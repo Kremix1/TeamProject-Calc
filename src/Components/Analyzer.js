@@ -17,8 +17,7 @@ const showIterationTable = (render, setRender) => {
 
 export default function Analyzer(props){
     const [render, setRender] = useState(false);
-    let copy = props.dataInCalculate.slice()
-    const [dataAnalyze, setDataAnalyze] = useState(copy)
+    const [dataAnalyze, setDataAnalyze] = useState(props.dataInCalculate)
     //https://react-bootstrap.netlify.app/components/table/#rb-docs-content (Конец документации)
     return(
         <>

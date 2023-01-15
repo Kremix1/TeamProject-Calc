@@ -14,8 +14,8 @@ const IterationOutput = ({name, row}) => {
 }
 
 const validateData = (dataItem) => {
-    return ((dataItem.allIteration <= 500 && dataItem.allIteration >= 0 && (dataItem.allIteration.indexOf('.') == -1)) &&
-        (dataItem.comission <= 100 && dataItem.comission >= 0 && (dataItem.comission.indexOf('.') == -1))) ? true : false;
+    return ((dataItem.allIteration <= 500 && dataItem.allIteration >= 0 && (dataItem.allIteration.indexOf('.') == -1) && (!dataItem.allIteration === "")) &&
+        (dataItem.comission <= 100 && dataItem.comission >= 0 && (dataItem.comission.indexOf('.') == -1)  && (!dataItem.comission === ""))) ? true : false;
 }
 
 const TotalButton = (data, setData, setErrClass) => {
