@@ -26,6 +26,8 @@ function App() {
         iterationDev: "",
         iterationTest: "",
         iterationPres: "",
+        allIterationAnalyze: "",
+        coefficientAnalyze: "",
         totalColor: "red",
       },
       {
@@ -41,6 +43,8 @@ function App() {
         iterationDev: "",
         iterationTest: "",
         iterationPres: "",
+        allIterationAnalyze: "",
+        coefficientAnalyze: "",
         totalColor: "red",
       },
       {
@@ -56,6 +60,8 @@ function App() {
         iterationDev: "",
         iterationTest: "",
         iterationPres: "",
+        allIterationAnalyze: "",
+        coefficientAnalyze: "",
         totalColor: "red",
       },
       {
@@ -71,6 +77,8 @@ function App() {
         iterationDev: "",
         iterationTest: "",
         iterationPres: "",
+        allIterationAnalyze: "",
+        coefficientAnalyze: "",
         totalColor: "red",
       },
       {
@@ -86,6 +94,8 @@ function App() {
         iterationDev: "",
         iterationTest: "",
         iterationPres: "",
+        allIterationAnalyze: "",
+        coefficientAnalyze: "",
         totalColor: "red",
       },
   ])
@@ -106,6 +116,8 @@ function App() {
       iterationDev: "",
       iterationTest: "",
       iterationPres: "",
+      allIterationAnalyze: "",
+      coefficientAnalyze: "",
       totalColor: "red",
     }]);
     setKey(Math.random());

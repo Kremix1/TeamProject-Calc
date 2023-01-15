@@ -33,7 +33,7 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setA
         + Number(data[i].iterationDev)
         + Number(data[i].iterationTest)
         + Number(data[i].iterationPres);
-        data[i].allIteration = Math.round(iterationsSum);
+        data[i].allIterationAnalyze = Math.round(iterationsSum);
         maxSum = Math.max(maxSum, iterationsSum);
     }
     let isTableFilled = false
@@ -44,7 +44,7 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setA
     }
     else if (data[0].iterationDesign == "") {
         for (var i = 0; i < data.length; i++) {
-            let predict =  ((maxSum - data[i].allIteration) / (5 - 1)).toFixed(2);
+            let predict =  ((maxSum - data[i].allIterationAnalyze) / (5 - 1)).toFixed(2);
             if (predict > 30) {
                 data[i].iterationDesign = 30;
                 data[i].iterationDev = 30;
@@ -61,7 +61,7 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setA
     }
     else if (data[0].iterationDev == "") {
         for (var i = 0; i < data.length; i++) {
-            let predict = ((maxSum - data[i].allIteration) / (5 - 2)).toFixed(2);
+            let predict = ((maxSum - data[i].allIterationAnalyze) / (5 - 2)).toFixed(2);
             if (predict > 30) {
                 data[i].iterationDev = 30;
                 data[i].iterationTest = 30;
@@ -75,7 +75,7 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setA
     }
     else if (data[0].iterationTest == "") {
         for (var i = 0; i < data.length; i++) {
-            let predict =  ((maxSum - data[i].allIteration) / (5 - 3)).toFixed(2);
+            let predict =  ((maxSum - data[i].allIterationAnalyze) / (5 - 3)).toFixed(2);
             if (predict > 30) {
                 data[i].iterationTest = 30;
                 data[i].iterationPres = 30;
@@ -88,7 +88,7 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setA
     }
     else if (data[0].iterationPres == "") {
         for (var i = 0; i < data.length; i++) {
-            let predict =  ((maxSum - data[i].allIteration) / (5 - 4)).toFixed(2);
+            let predict =  ((maxSum - data[i].allIterationAnalyze) / (5 - 4)).toFixed(2);
             if (predict > 30) {
                 data[i].iterationPres = 30;
             }
@@ -110,12 +110,12 @@ const Advise = (data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setA
 
 
     for (var i = 0; i < data.length; i++) {
-        data[i].allIteration = Math.round(Number(data[i].iterationAnalyze)
+        data[i].allIterationAnalyze = Math.round(Number(data[i].iterationAnalyze)
         + Number(data[i].iterationDesign)
         + Number(data[i].iterationDev)
         + Number(data[i].iterationTest)
         + Number(data[i].iterationPres));
-        data[i].coefficient = (data[i].allIteration / maxSum).toFixed(2);
+        data[i].coefficientAnalyze = (data[i].allIterationAnalyze / maxSum).toFixed(2);
     }
 }
 
@@ -124,6 +124,7 @@ const handleSubmit = (e) =>{
 }
 let adviseString = []
 export const AnalyzeTable = (props) => {
+    const [data, setData] = useState(props.dataInCalculate)
     const [noneClass, setNoneClass] = useState('advise-hide');
     const [adviseNone, setAdviseNone] = useState('Ничего уже не изменить, нужно было думать раньше!');
     const [advise, setAdvise] = useState('');
@@ -142,7 +143,7 @@ export const AnalyzeTable = (props) => {
 
     return(
         <>
-            {props.dataInCalculate.map(row =>
+            {data.map(row =>
                 <tr key={row.identify}>
                 <td>{row.personName}</td>
                 <td className="center">
@@ -150,19 +151,19 @@ export const AnalyzeTable = (props) => {
                 </td>
                 <td className="center">
                         <form onSubmit={(e) => handleSubmit(e)} className="table__input-place">
-                            <IterationOutput name='allIteration' row={row}/>
+                            <IterationOutput name='allIterationAnalyze' row={row}/>
                         </form>
                 </td>
                 <td className="center">
                     <div className="table__input-place">
                         <form onSubmit={(e) => handleSubmit(e)}>
-                            <IterationOutput name='coefficient' row={row}/>
+                            <IterationOutput name='coefficientAnalyze' row={row}/>
                         </form>
                     </div>
                 </td>
                 </tr>
             )}
-        <div className="table-wrapper__button" onClick={() => Advise(props.dataInCalculate, setErrClass, setAdvise, setAdviseClass, setNoneClass, setAdviseNone)}>Получить совет</div>
+        <div className="table-wrapper__button" onClick={() => Advise(data, setErrClass, setAdvise, setAdviseClass, setNoneClass, setAdviseNone)}>Получить совет</div>
         <div className={adviseClass}>
             {adviseString.map(row =>
                 <div key={row}>{row}</div>
